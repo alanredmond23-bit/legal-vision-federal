@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Scale, Lock, User, AlertCircle } from 'lucide-react';
+import type { AttorneyType } from '../context/UserContext';
 
 interface LoginPageProps {
-  onLogin: () => void;
+  onLogin: (attorney: AttorneyType) => void;
 }
 
 export default function LoginPage({ onLogin }: LoginPageProps) {
@@ -19,7 +20,9 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     // Simulate authentication delay
     setTimeout(() => {
       if (username === 'AttorneyCooper' && password === 'Win2026!') {
-        onLogin();
+        onLogin('cooper');
+      } else if (username === 'AttorneyRush' && password === 'Win2026!') {
+        onLogin('rush');
       } else {
         setError('Invalid credentials. Please try again.');
         setIsLoading(false);
@@ -143,7 +146,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             Authorized personnel only. All access is logged and monitored.
           </p>
           <p className="text-xs text-gray-600 mt-2">
-            Benjamin Cooper, Esq. | Cooper Law Firm
+            EDPA 24-376 Defense Team
           </p>
         </div>
       </div>

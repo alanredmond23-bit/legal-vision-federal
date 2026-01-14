@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TrendingUp, GitBranch, ChevronDown, ChevronRight } from 'lucide-react';
 import type { Node, CostsData, CaseData } from '../types';
+import { useUser } from '../context/UserContext';
 
 interface WarRoomViewProps {
   nodes: Node[];
@@ -44,6 +45,7 @@ function formatDate(dateStr: string): string {
 export default function WarRoomView({ nodes, costs: _costs, caseInfo }: WarRoomViewProps) {
   const [expandedNode, setExpandedNode] = useState<number | null>(null);
   const [selectedPhase, setSelectedPhase] = useState<string>('all');
+  const { attorneyInfo } = useUser();
 
   const phases = ['all', 'Discovery/Taint', 'Motion Battle', 'Evidentiary Hearings', 'Plea Negotiation', 'Pretrial Prep', 'Trial'];
 
@@ -60,10 +62,10 @@ export default function WarRoomView({ nodes, costs: _costs, caseInfo }: WarRoomV
 
   return (
     <div className="space-y-6">
-      {/* Cooper Advisory Header */}
+      {/* Attorney Advisory Header */}
       <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
         <p className="text-amber-800 font-medium text-center italic">
-          Strategy determined in consultation with Benjamin Cooper
+          Strategy determined in consultation with {attorneyInfo.name}
         </p>
       </div>
 

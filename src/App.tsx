@@ -9,14 +9,15 @@ import ProgressView from './components/ProgressView';
 import ForecastingView from './components/ForecastingView';
 import AlanDeliverablesView from './components/AlanDeliverablesView';
 import ComingFeaturesView from './components/ComingFeaturesView';
+import { UserProvider, AttorneyType, ATTORNEYS } from './context/UserContext';
 import caseData from './data/case.json';
 import nodesData from './data/nodes.json';
 import costsData from './data/costs.json';
 import type { CaseData, NodesData, CostsData, ViewMode } from './types';
 
-const typedCaseData = caseData as CaseData;
-const typedNodesData = nodesData as NodesData;
-const typedCostsData = costsData as unknown as CostsData;
+const baseCaseData = caseData as CaseData;
+const baseNodesData = nodesData as NodesData;
+const baseCostsData = costsData as unknown as CostsData;
 
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', {
@@ -34,7 +35,7 @@ function getDaysUntil(dateStr: string): number {
 }
 
 function getDaysFromEngagement(): number {
-  const engagement = new Date(typedCaseData.engagement_start);
+  const engagement = new Date(baseCaseData.engagement_start);
   const today = new Date();
   const diff = today.getTime() - engagement.getTime();
   return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
@@ -53,21 +54,57 @@ function getCurrentPhase(): string {
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentAttorney, setCurrentAttorney] = useState<AttorneyType>('cooper');
   const [viewMode, setViewMode] = useState<ViewMode>('attorney');
-  const [dashboardExpanded, setDashboardExpanded] = useState(true);
+  const [dashboardExpanded, setDashboardExpanded] = useState(false);
 
   // Show login page if not authenticated
   if (!isAuthenticated) {
-    return <LoginPage onLogin={() => setIsAuthenticated(true)} />;
+    return <LoginPage onLogin={(attorney: AttorneyType) => {
+      setCurrentAttorney(attorney);
+      setIsAuthenticated(true);
+    }} />;
   }
 
-  const daysToTarget = getDaysUntil(typedCaseData.target_date);
-  const daysToTrial = getDaysUntil(typedCaseData.trial_date);
+  // Get attorney-specific data
+  const attorneyInfo = ATTORNEYS[currentAttorney];
+
+  // Create dynamic case data based on logged-in attorney
+  const dynamicCaseData: CaseData = {
+    ...baseCaseData,
+    attorney: {
+      ...baseCaseData.attorney,
+      name: attorneyInfo.name,
+      firm: attorneyInfo.firm
+    }
+  };
+
+  // Create dynamic nodes data (update first node title)
+  const dynamicNodesData: NodesData = {
+    ...baseNodesData,
+    nodes: baseNodesData.nodes.map(node =>
+      node.id === 0
+        ? { ...node, title: `${attorneyInfo.shortName} Enter Appearance` }
+        : node
+    )
+  };
+
+  // Create dynamic costs data
+  const dynamicCostsData: CostsData = {
+    ...baseCostsData,
+    attorney: {
+      ...baseCostsData.attorney,
+      name: attorneyInfo.name
+    }
+  };
+
+  const daysToTarget = getDaysUntil(dynamicCaseData.target_date);
+  const daysToTrial = getDaysUntil(dynamicCaseData.trial_date);
   const currentPhase = getCurrentPhase();
   const daysSinceEngagement = getDaysFromEngagement();
 
   // Calculate attorney hours and cost totals
-  const totals = typedNodesData.nodes.reduce(
+  const totals = dynamicNodesData.nodes.reduce(
     (acc, node) => ({
       attorneyHoursMin: acc.attorneyHoursMin + node.attorney_hours_min,
       attorneyHoursMax: acc.attorneyHoursMax + node.attorney_hours_max,
@@ -89,6 +126,7 @@ function App() {
   ];
 
   return (
+    <UserProvider attorney={currentAttorney}>
     <div className="min-h-screen bg-gray-50 flex">
       {/* Left Sidebar */}
       <aside className="w-72 bg-legal-navy text-white flex flex-col min-h-screen">
@@ -97,8 +135,8 @@ function App() {
           <div className="flex items-center gap-3">
             <Scale className="w-8 h-8 text-legal-gold" />
             <div>
-              <h1 className="font-bold text-lg">{typedCaseData.name}</h1>
-              <p className="text-xs text-blue-200">{typedCaseData.docket}</p>
+              <h1 className="font-bold text-lg">{dynamicCaseData.name}</h1>
+              <p className="text-xs text-blue-200">{dynamicCaseData.docket}</p>
             </div>
           </div>
         </div>
@@ -107,16 +145,19 @@ function App() {
         <div className="border-b border-blue-800">
           <button
             onClick={() => setDashboardExpanded(!dashboardExpanded)}
-            className="w-full p-4 flex items-center justify-between hover:bg-blue-800/50 transition-colors"
+            className={`w-full p-4 flex items-center justify-between hover:bg-blue-800/50 transition-colors ${!dashboardExpanded ? 'flash-green bg-green-900/30 border border-green-500/50 rounded-lg m-1' : ''}`}
           >
             <div className="flex items-center gap-2">
-              <LayoutDashboard className="w-5 h-5 text-legal-gold" />
+              <LayoutDashboard className={`w-5 h-5 ${!dashboardExpanded ? 'text-green-400' : 'text-legal-gold'}`} />
               <span className="font-semibold">Dashboard</span>
+              {!dashboardExpanded && (
+                <span className="text-xs text-green-300 ml-2">← Click to get started</span>
+              )}
             </div>
             {dashboardExpanded ? (
               <ChevronDown className="w-5 h-5" />
             ) : (
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5 text-green-400" />
             )}
           </button>
 
@@ -128,7 +169,7 @@ function App() {
                   <Target className="w-4 h-4" />
                   TARGET DATE
                 </div>
-                <p className="font-bold text-lg">{formatDate(typedCaseData.target_date)}</p>
+                <p className="font-bold text-lg">{formatDate(dynamicCaseData.target_date)}</p>
                 <p className="text-xs text-blue-300">{daysToTarget} days</p>
                 <p className="text-xs text-blue-400 mt-1 italic">Continuance negotiation ongoing</p>
               </div>
@@ -139,7 +180,7 @@ function App() {
                   <Gavel className="w-4 h-4" />
                   TRIAL DATE
                 </div>
-                <p className="font-bold text-lg">{formatDate(typedCaseData.trial_date)}</p>
+                <p className="font-bold text-lg">{formatDate(dynamicCaseData.trial_date)}</p>
                 <p className="text-xs text-blue-300">{daysToTrial} days</p>
               </div>
 
@@ -149,9 +190,9 @@ function App() {
                   <Scale className="w-4 h-4" />
                   TOTAL CHARGES
                 </div>
-                <p className="font-bold text-lg">{typedCaseData.charges.total} Counts</p>
+                <p className="font-bold text-lg">{dynamicCaseData.charges.total} Counts</p>
                 <p className="text-xs text-blue-300">
-                  {typedCaseData.charges.wire_fraud}WF, {typedCaseData.charges.tax_evasion}TE, {typedCaseData.charges.tax_failure}TF
+                  {dynamicCaseData.charges.wire_fraud}WF, {dynamicCaseData.charges.tax_evasion}TE, {dynamicCaseData.charges.tax_failure}TF
                 </p>
               </div>
 
@@ -171,8 +212,8 @@ function App() {
                   <Users className="w-4 h-4" />
                   DEFENDANT
                 </div>
-                <p className="font-bold text-lg">{typedCaseData.defendant}</p>
-                <p className="text-xs text-blue-300">@${typedCaseData.attorney.hourly_rate}/hr</p>
+                <p className="font-bold text-lg">{dynamicCaseData.defendant}</p>
+                <p className="text-xs text-blue-300">@${dynamicCaseData.attorney.hourly_rate}/hr</p>
               </div>
 
               <div className="border-t border-blue-700 pt-3 space-y-3">
@@ -232,10 +273,10 @@ function App() {
 
         {/* Sidebar Footer */}
         <div className="p-4 border-t border-blue-800 text-xs text-blue-300">
-          <p className="font-semibold text-white">Hon. {typedCaseData.judge}</p>
-          <p>{typedCaseData.court}</p>
-          <p className="mt-2">{typedCaseData.attorney.name}</p>
-          <p className="text-blue-400">{typedCaseData.attorney.firm}</p>
+          <p className="font-semibold text-white">Hon. {dynamicCaseData.judge}</p>
+          <p>{dynamicCaseData.court}</p>
+          <p className="mt-2">{dynamicCaseData.attorney.name}</p>
+          <p className="text-blue-400">{dynamicCaseData.attorney.firm}</p>
         </div>
       </aside>
 
@@ -255,29 +296,29 @@ function App() {
         <main className={`flex-1 p-6 overflow-auto ${viewMode === 'gametree' ? 'max-w-full' : 'max-w-7xl'}`}>
           {viewMode === 'attorney' ? (
             <AttorneyView
-              nodes={typedNodesData.nodes}
-              costs={typedCostsData}
-              attorney={typedCaseData.attorney}
+              nodes={dynamicNodesData.nodes}
+              costs={dynamicCostsData}
+              attorney={dynamicCaseData.attorney}
               currentPhase={currentPhase}
-              engagementStart={typedCaseData.engagement_start}
+              engagementStart={dynamicCaseData.engagement_start}
             />
           ) : viewMode === 'timeline' ? (
-            <DefenseTimeline nodes={typedNodesData.nodes} />
+            <DefenseTimeline nodes={dynamicNodesData.nodes} />
           ) : viewMode === 'warroom' ? (
             <WarRoomView
-              nodes={typedNodesData.nodes}
-              costs={typedCostsData}
-              caseInfo={typedCaseData}
+              nodes={dynamicNodesData.nodes}
+              costs={dynamicCostsData}
+              caseInfo={dynamicCaseData}
             />
           ) : viewMode === 'progress' ? (
             <ProgressView
-              nodes={typedNodesData.nodes}
+              nodes={dynamicNodesData.nodes}
               currentPhase={currentPhase}
             />
           ) : viewMode === 'forecasting' ? (
             <ForecastingView
-              nodes={typedNodesData.nodes}
-              costs={typedCostsData}
+              nodes={dynamicNodesData.nodes}
+              costs={dynamicCostsData}
             />
           ) : viewMode === 'deliverables' ? (
             <AlanDeliverablesView />
@@ -296,6 +337,7 @@ function App() {
         </footer>
       </div>
     </div>
+    </UserProvider>
   );
 }
 
