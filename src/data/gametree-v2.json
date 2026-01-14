@@ -303,7 +303,7 @@
       "id": "phase-0",
       "name": "Phase 0: Preflight",
       "dateRange": "Jan 14, 2026 (TODAY)",
-      "description": "ACTIVE NOW - Bill Rush negotiating continuance. MINIMUM 6 MONTHS REQUIRED.",
+      "description": "ACTIVE NOW - {{ATTORNEY}} negotiating continuance. MINIMUM 6 MONTHS REQUIRED.",
       "status": "active",
       "minimumAcceptable": "6 months (October 22, 2026)"
     },
@@ -342,12 +342,12 @@
     {
       "id": "continuance-negotiation",
       "type": "defense",
-      "title": "Bill Rush Continuance Negotiation",
+      "title": "{{ATTORNEY}} Continuance Negotiation",
       "phase": "phase-0",
       "details": {
         "deadline": "2026-01-14",
         "clientTask": "DO NOT agree to anything under 6 months without calling attorney first",
-        "attorneyTask": "Bill Rush direct negotiation with AUSA. MINIMUM 6 MONTHS (October 22, 2026). If under 6 months offered, STOP and escalate.",
+        "attorneyTask": "{{ATTORNEY}} direct negotiation with AUSA. MINIMUM 6 MONTHS (October 22, 2026). If under 6 months offered, STOP and escalate.",
         "hours": 2,
         "probability": 0.85,
         "evidence": ["Case complexity: 27 counts", "315K discovery documents", "Superseding indictment 7 months after original", "J6 precedent: 12-24 month continuances for comparable volumes"],

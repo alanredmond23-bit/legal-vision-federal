@@ -69,14 +69,14 @@ export default function WarRoomView({ nodes, costs: _costs, caseInfo }: WarRoomV
         </p>
       </div>
 
-      {/* Bill Rush Continuance - PROMINENT FLASH */}
+      {/* Continuance Negotiation - PROMINENT FLASH */}
       <div className="bg-amber-100 border-2 border-amber-400 rounded-lg p-4 animate-pulse">
         <div className="flex items-center gap-3">
           <span className="relative flex h-4 w-4">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
           </span>
-          <span className="font-bold text-amber-900 text-lg">BILL RUSH CONTINUANCE NEGOTIATION ACTIVE</span>
+          <span className="font-bold text-amber-900 text-lg">{attorneyInfo.shortName.toUpperCase()} CONTINUANCE NEGOTIATION ACTIVE</span>
         </div>
         <p className="text-amber-800 mt-2 text-sm">
           Currently negotiating with federal prosecutors for additional preparation time. Status updates pending.

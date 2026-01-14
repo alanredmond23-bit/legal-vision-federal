@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle2, Clock, Circle, GripVertical, ChevronDown, ChevronRight, AlertTriangle } from 'lucide-react';
-
-const STORAGE_KEY = 'edpa-24376-progress';
+import { useUser } from '../context/UserContext';
 
 interface Node {
   id: number;
@@ -33,6 +32,9 @@ interface Task {
 }
 
 export default function ProgressView({ nodes, currentPhase }: ProgressViewProps) {
+  const { attorney } = useUser();
+  const STORAGE_KEY = `edpa-24376-progress-${attorney}`;
+
   // Convert nodes to tasks (both client and attorney tasks)
   const createInitialTasks = (): Task[] => nodes.flatMap((node, idx) => [
     {
@@ -59,7 +61,7 @@ export default function ProgressView({ nodes, currentPhase }: ProgressViewProps)
 
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  // Load from localStorage on mount
+  // Load from localStorage on mount or when attorney changes
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -72,7 +74,7 @@ export default function ProgressView({ nodes, currentPhase }: ProgressViewProps)
     } else {
       setTasks(createInitialTasks());
     }
-  }, [nodes]);
+  }, [nodes, attorney, STORAGE_KEY]);
 
   // Save to localStorage when tasks change
   useEffect(() => {

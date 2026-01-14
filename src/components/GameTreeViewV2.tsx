@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Gavel, Shield, Target, Zap, ChevronRight, ChevronDown, Menu, X, FileText, Book } from 'lucide-react';
 import gameTreeData from '../data/gametree-v2.json';
+import { useUser } from '../context/UserContext';
 
 // Motion Glossary Types
 interface MotionCategory {
@@ -126,6 +127,11 @@ function DefenseNode({
   animationDelay: number;
   hasBeenClicked: boolean;
 }) {
+  const { attorneyInfo } = useUser();
+  const replaceAttorney = (text: string | undefined): string => {
+    if (!text) return '';
+    return text.replace(/\{\{ATTORNEY\}\}/g, attorneyInfo.shortName);
+  };
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -156,7 +162,7 @@ function DefenseNode({
             <Gavel className="w-6 h-6 text-white" />
           </div>
           <div className="flex-1 text-left">
-            <h3 className="font-bold text-gray-900">{move.title}</h3>
+            <h3 className="font-bold text-gray-900">{replaceAttorney(move.title)}</h3>
             <p className="text-sm text-gray-500">Click to reveal govt responses</p>
           </div>
           {isExpanded ? (
@@ -627,6 +633,11 @@ function All5PhasesView({
   onPhaseSelect: (phaseId: string) => void;
   onMoveSelect: (move: Move) => void;
 }) {
+  const { attorneyInfo } = useUser();
+  const replaceAttorney = (text: string | undefined): string => {
+    if (!text) return '';
+    return text.replace(/\{\{ATTORNEY\}\}/g, attorneyInfo.shortName);
+  };
   const allMoves = gameTreeData.moves as Move[];
 
   // 5 core phases (skip preflight and trial)
@@ -695,7 +706,7 @@ function All5PhasesView({
                   >
                     <div className="flex items-center gap-2">
                       <Gavel className="w-3 h-3 text-gray-500" />
-                      <span className="text-xs font-medium text-gray-900 truncate">{move.title}</span>
+                      <span className="text-xs font-medium text-gray-900 truncate">{replaceAttorney(move.title)}</span>
                     </div>
                     <div className="flex items-center justify-between mt-1">
                       <span className="text-[10px] text-gray-500">4 responses</span>
@@ -948,6 +959,11 @@ function SidePanel({
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const { attorneyInfo } = useUser();
+  const replaceAttorney = (text: string | undefined): string => {
+    if (!text) return '';
+    return text.replace(/\{\{ATTORNEY\}\}/g, attorneyInfo.shortName);
+  };
   const phases = gameTreeData.phases;
   const tutorial = gameTreeData.tutorial;
 
@@ -1039,14 +1055,14 @@ function SidePanel({
             {phase === 'phase-0' ? 'VIEWING PREFLIGHT' : 'START HERE - PREFLIGHT ACTIVE'}
           </button>
 
-          {/* Bill Rush Continuance - PROMINENT FLASH */}
+          {/* Continuance Negotiation - PROMINENT FLASH */}
           <div className="mt-3 p-3 bg-amber-100 border-2 border-amber-400 rounded-lg animate-pulse">
             <div className="flex items-center gap-2">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
               </span>
-              <span className="font-bold text-amber-800 text-sm">BILL RUSH CONTINUANCE</span>
+              <span className="font-bold text-amber-800 text-sm">{attorneyInfo.shortName.toUpperCase()} CONTINUANCE</span>
             </div>
             <p className="text-xs text-amber-700 mt-1 font-semibold">
               Negotiating with feds - Continuance discussion ACTIVE
@@ -1079,7 +1095,7 @@ function SidePanel({
             {phases.find(p => p.id === phase)?.dateRange}
           </p>
           <p className="text-xs text-blue-600 mt-1 font-medium">
-            {phases.find(p => p.id === phase)?.description}
+            {replaceAttorney(phases.find(p => p.id === phase)?.description)}
           </p>
         </div>
 
@@ -1122,7 +1138,7 @@ function SidePanel({
         {/* Selected Node Details */}
         {selectedMove ? (
           <div className="p-4">
-            <h3 className="font-bold text-gray-900 text-lg mb-4">{selectedMove.title}</h3>
+            <h3 className="font-bold text-gray-900 text-lg mb-4">{replaceAttorney(selectedMove.title)}</h3>
 
             <div className="space-y-4">
               <div>
@@ -1136,12 +1152,12 @@ function SidePanel({
 
               <div>
                 <span className="text-xs font-medium text-gray-500 uppercase">Client Task</span>
-                <p className="text-sm text-gray-700">{selectedMove.details.clientTask}</p>
+                <p className="text-sm text-gray-700">{replaceAttorney(selectedMove.details.clientTask)}</p>
               </div>
 
               <div>
                 <span className="text-xs font-medium text-gray-500 uppercase">Attorney Task</span>
-                <p className="text-sm text-gray-700">{selectedMove.details.attorneyTask}</p>
+                <p className="text-sm text-gray-700">{replaceAttorney(selectedMove.details.attorneyTask)}</p>
               </div>
 
               <div className="flex gap-6">
@@ -1190,6 +1206,7 @@ function SidePanel({
 
 // Main Component
 export default function GameTreeViewV2() {
+  const { attorneyInfo } = useUser();
   const [phase, setPhase] = useState('phase-0');
   const [expandedMoves, setExpandedMoves] = useState<Set<string>>(new Set());
   const [expandedResponses, setExpandedResponses] = useState<Record<string, string | null>>({});
@@ -1200,6 +1217,12 @@ export default function GameTreeViewV2() {
   const [loadProgress, setLoadProgress] = useState(0);
   const [motionsModalOpen, setMotionsModalOpen] = useState(false);
   const [clickedMoves, setClickedMoves] = useState<Set<string>>(new Set());
+
+  // Helper to replace {{ATTORNEY}} placeholder with actual attorney name
+  const replaceAttorney = (text: string | undefined): string => {
+    if (!text) return '';
+    return text.replace(/\{\{ATTORNEY\}\}/g, attorneyInfo.shortName);
+  };
 
   const motionsCount = ((gameTreeData.motionsGlossary as MotionsGlossaryData)?.motions || []).length;
 
@@ -1396,7 +1419,7 @@ export default function GameTreeViewV2() {
                       <div className="w-8 h-0.5 bg-green-500" />
                       <Zap className="w-4 h-4" />
                       <span className="text-xs font-medium">
-                        Win cascades to: {phaseMoves.find(m => m.id === move.outcomes.win.cascadeTo)?.title || move.outcomes.win.cascadeTo}
+                        Win cascades to: {replaceAttorney(phaseMoves.find(m => m.id === move.outcomes.win.cascadeTo)?.title) || move.outcomes.win.cascadeTo}
                       </span>
                     </div>
                   )}
