@@ -1,4 +1,4 @@
-import { Clock, DollarSign, Calendar, CheckCircle, AlertTriangle, FileText, Search, FolderOpen } from 'lucide-react';
+import { Clock, DollarSign, Calendar, CheckCircle, AlertTriangle, FileText, Search, FolderOpen, TrendingUp, Trophy, Zap } from 'lucide-react';
 import type { Node, CostsData } from '../types';
 
 interface AttorneyViewProps {
@@ -39,10 +39,66 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
     { attorneyHoursMin: 0, attorneyHoursMax: 0, travelHours: 0, costMin: 0, costMax: 0 }
   );
 
+  // Early Win Incentive Data - Shows effective $/hour at each phase
+  const earlyWinIncentives = [
+    {
+      phase: 'Phase 1',
+      name: 'Discovery Win',
+      payment: 40000,
+      hours: 45,
+      effectiveRate: 889,
+      description: 'Case dismissed on discovery/Brady violations',
+      highlight: true,
+      emoji: '🏆'
+    },
+    {
+      phase: 'Phase 2',
+      name: 'Motion Victory',
+      payment: 42000,
+      hours: 75,
+      effectiveRate: 560,
+      description: 'Key counts dismissed via motions',
+      highlight: true,
+      emoji: '⚡'
+    },
+    {
+      phase: 'Phase 3',
+      name: 'Evidentiary Win',
+      payment: 44000,
+      hours: 100,
+      effectiveRate: 440,
+      description: 'Evidence suppressed, case weakened',
+      highlight: false,
+      emoji: '📋'
+    },
+    {
+      phase: 'Phase 4',
+      name: 'Plea Deal',
+      payment: 46000,
+      hours: 120,
+      effectiveRate: 383,
+      description: 'Favorable plea negotiated',
+      highlight: false,
+      emoji: '🤝'
+    },
+    {
+      phase: 'Phase 5-6',
+      name: 'Trial Prep/Trial',
+      payment: 50000,
+      hours: 165,
+      effectiveRate: 303,
+      description: 'Full trial preparation and execution',
+      highlight: false,
+      emoji: '⚖️'
+    },
+  ];
+
   return (
-    <div className="space-y-6">
-      {/* Summary Cards */}
-      <div className="grid grid-cols-4 gap-4">
+    <div className="flex gap-6">
+      {/* Main Content - Left Side */}
+      <div className="flex-1 space-y-6">
+        {/* Summary Cards */}
+        <div className="grid grid-cols-4 gap-4">
         <div className="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
           <div className="flex items-center gap-2 text-blue-700 mb-2">
             <Calendar className="w-5 h-5" />
@@ -237,6 +293,110 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
                 </div>
               );
             })}
+          </div>
+        </div>
+      </div>
+      </div>
+
+      {/* Early Win Incentive Panel - Right Side */}
+      <div className="w-80 flex-shrink-0">
+        <div className="sticky top-6 space-y-4">
+          {/* Header Card */}
+          <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl p-5 text-white shadow-lg">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-white/20 p-2 rounded-lg">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">Early Win Bonus</h3>
+                <p className="text-green-100 text-sm">Higher $/hr for faster wins</p>
+              </div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-3 mt-3">
+              <p className="text-sm text-green-100">Win early = Same pay, fewer hours</p>
+              <p className="text-2xl font-bold mt-1">Up to $889/hr</p>
+            </div>
+          </div>
+
+          {/* Phase Breakdown */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-green-200">
+            <div className="bg-green-50 px-4 py-3 border-b border-green-200">
+              <div className="flex items-center gap-2">
+                <Trophy className="w-5 h-5 text-green-600" />
+                <span className="font-bold text-green-800">Effective Rate by Phase</span>
+              </div>
+            </div>
+
+            <div className="divide-y divide-gray-100">
+              {earlyWinIncentives.map((incentive, idx) => (
+                <div
+                  key={idx}
+                  className={`p-4 ${incentive.highlight ? 'bg-gradient-to-r from-green-50 to-emerald-50' : ''}`}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">{incentive.emoji}</span>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${
+                          incentive.highlight
+                            ? 'bg-green-600 text-white'
+                            : 'bg-gray-200 text-gray-700'
+                        }`}>
+                          {incentive.phase}
+                        </span>
+                      </div>
+                      <p className="font-semibold text-gray-900 mt-1">{incentive.name}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{incentive.description}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className={`text-xl font-bold ${
+                        incentive.highlight ? 'text-green-600' : 'text-gray-700'
+                      }`}>
+                        ${incentive.effectiveRate}
+                      </p>
+                      <p className="text-xs text-gray-500">per hour</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-2 flex gap-4 text-xs text-gray-500">
+                    <span className="flex items-center gap-1">
+                      <DollarSign className="w-3 h-3" />
+                      ${incentive.payment.toLocaleString()} total
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      ~{incentive.hours} hrs
+                    </span>
+                  </div>
+
+                  {/* Progress bar showing relative hourly rate */}
+                  <div className="mt-2">
+                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${
+                          incentive.highlight
+                            ? 'bg-gradient-to-r from-green-500 to-emerald-400'
+                            : 'bg-gray-400'
+                        }`}
+                        style={{ width: `${(incentive.effectiveRate / 889) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-4">
+            <div className="flex items-center gap-2 text-amber-800">
+              <Zap className="w-5 h-5" />
+              <span className="font-bold">Strategy Focus</span>
+            </div>
+            <p className="text-sm text-amber-700 mt-2">
+              Phase 1 & 2 wins maximize your effective hourly rate.
+              <span className="font-bold"> Focus early motions!</span>
+            </p>
           </div>
         </div>
       </div>
