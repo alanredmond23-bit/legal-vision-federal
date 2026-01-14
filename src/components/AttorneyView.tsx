@@ -1,4 +1,4 @@
-import { Clock, DollarSign, Calendar, CheckCircle, AlertTriangle, FileText, Search, FolderOpen, TrendingUp, Trophy, Zap } from 'lucide-react';
+import { Clock, DollarSign, Calendar, CheckCircle, AlertTriangle, FileText, Search, FolderOpen } from 'lucide-react';
 import type { Node, CostsData } from '../types';
 
 interface AttorneyViewProps {
@@ -39,57 +39,58 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
     { attorneyHoursMin: 0, attorneyHoursMax: 0, travelHours: 0, costMin: 0, costMax: 0 }
   );
 
-  // Early Win Incentive Data - Shows effective $/hour at each phase
-  const earlyWinIncentives = [
+  // Case Resolution Scenarios - What "winning" looks like at each phase
+  // Same total fee regardless of when case resolves, but fewer hours = higher effective rate
+  const resolutionScenarios = [
     {
       phase: 'Phase 1',
-      name: 'Discovery Win',
-      payment: 40000,
-      hours: 45,
-      effectiveRate: 889,
-      description: 'Case dismissed on discovery/Brady violations',
-      highlight: true,
-      emoji: '🏆'
+      resolution: 'Dismissal',
+      outcome: 'Government dismisses case',
+      reason: 'Brady/Giglio violations, discovery failures, or prosecutorial misconduct force dismissal',
+      totalFee: 45000,
+      estimatedHours: 50,
+      effectiveRate: 900,
+      tier: 'optimal'
     },
     {
       phase: 'Phase 2',
-      name: 'Motion Victory',
-      payment: 42000,
-      hours: 75,
-      effectiveRate: 560,
-      description: 'Key counts dismissed via motions',
-      highlight: true,
-      emoji: '⚡'
+      resolution: 'Motion Victory',
+      outcome: 'Charges dropped',
+      reason: 'Successful suppression motions eliminate key evidence; government cannot proceed',
+      totalFee: 45000,
+      estimatedHours: 85,
+      effectiveRate: 529,
+      tier: 'excellent'
     },
     {
       phase: 'Phase 3',
-      name: 'Evidentiary Win',
-      payment: 44000,
-      hours: 100,
-      effectiveRate: 440,
-      description: 'Evidence suppressed, case weakened',
-      highlight: false,
-      emoji: '📋'
+      resolution: 'Evidentiary Collapse',
+      outcome: 'Case dismissed or reduced',
+      reason: 'Evidentiary hearings expose fatal weaknesses; government offers dismissal or minimal plea',
+      totalFee: 45000,
+      estimatedHours: 110,
+      effectiveRate: 409,
+      tier: 'good'
     },
     {
       phase: 'Phase 4',
-      name: 'Plea Deal',
-      payment: 46000,
-      hours: 120,
-      effectiveRate: 383,
-      description: 'Favorable plea negotiated',
-      highlight: false,
-      emoji: '🤝'
+      resolution: 'Favorable Plea',
+      outcome: 'No incarceration',
+      reason: 'Negotiated resolution with probation, diversion, or deferred adjudication - no jail time',
+      totalFee: 45000,
+      estimatedHours: 130,
+      effectiveRate: 346,
+      tier: 'standard'
     },
     {
       phase: 'Phase 5-6',
-      name: 'Trial Prep/Trial',
-      payment: 50000,
-      hours: 165,
-      effectiveRate: 303,
-      description: 'Full trial preparation and execution',
-      highlight: false,
-      emoji: '⚖️'
+      resolution: 'Trial Acquittal',
+      outcome: 'Jury verdict: Not Guilty',
+      reason: 'Full trial results in acquittal on all counts or hung jury forcing dismissal',
+      totalFee: 45000,
+      estimatedHours: 175,
+      effectiveRate: 257,
+      tier: 'extended'
     },
   ];
 
@@ -298,105 +299,111 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
       </div>
       </div>
 
-      {/* Early Win Incentive Panel - Right Side */}
-      <div className="w-80 flex-shrink-0">
+      {/* Case Resolution Economics - Right Side */}
+      <div className="w-96 flex-shrink-0">
         <div className="sticky top-6 space-y-4">
-          {/* Header Card */}
-          <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl p-5 text-white shadow-lg">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="bg-white/20 p-2 rounded-lg">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg">Early Win Bonus</h3>
-                <p className="text-green-100 text-sm">Higher $/hr for faster wins</p>
-              </div>
+          {/* Explanation Header */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="bg-legal-navy text-white px-5 py-4">
+              <h3 className="font-bold text-lg">Case Resolution Economics</h3>
+              <p className="text-blue-200 text-sm mt-1">How early wins affect effective compensation</p>
             </div>
-            <div className="bg-white/10 rounded-lg p-3 mt-3">
-              <p className="text-sm text-green-100">Win early = Same pay, fewer hours</p>
-              <p className="text-2xl font-bold mt-1">Up to $889/hr</p>
+            <div className="p-5 bg-gray-50 border-b border-gray-200">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                The agreed fee for this matter is <span className="font-bold">$45,000</span> regardless of when the case resolves.
+                However, your <span className="font-semibold">effective hourly rate</span> varies significantly based on
+                <span className="font-semibold"> when</span> we achieve a favorable outcome.
+              </p>
+              <p className="text-sm text-gray-600 mt-3 italic">
+                Earlier resolution = fewer billable hours = higher effective rate per hour worked.
+              </p>
             </div>
           </div>
 
-          {/* Phase Breakdown */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-green-200">
-            <div className="bg-green-50 px-4 py-3 border-b border-green-200">
-              <div className="flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-green-600" />
-                <span className="font-bold text-green-800">Effective Rate by Phase</span>
-              </div>
+          {/* Resolution Scenarios */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="px-5 py-3 bg-gray-100 border-b border-gray-200">
+              <span className="font-semibold text-gray-800 text-sm">If We Win At Each Phase</span>
             </div>
 
             <div className="divide-y divide-gray-100">
-              {earlyWinIncentives.map((incentive, idx) => (
-                <div
-                  key={idx}
-                  className={`p-4 ${incentive.highlight ? 'bg-gradient-to-r from-green-50 to-emerald-50' : ''}`}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
+              {resolutionScenarios.map((scenario, idx) => {
+                const tierStyles: Record<string, { bg: string; border: string; badge: string; rate: string }> = {
+                  optimal: { bg: 'bg-green-50', border: 'border-l-green-500', badge: 'bg-green-600 text-white', rate: 'text-green-700' },
+                  excellent: { bg: 'bg-emerald-50', border: 'border-l-emerald-500', badge: 'bg-emerald-600 text-white', rate: 'text-emerald-700' },
+                  good: { bg: 'bg-blue-50', border: 'border-l-blue-500', badge: 'bg-blue-600 text-white', rate: 'text-blue-700' },
+                  standard: { bg: 'bg-gray-50', border: 'border-l-gray-400', badge: 'bg-gray-500 text-white', rate: 'text-gray-700' },
+                  extended: { bg: 'bg-gray-50', border: 'border-l-gray-300', badge: 'bg-gray-400 text-white', rate: 'text-gray-600' },
+                };
+                const style = tierStyles[scenario.tier];
+
+                return (
+                  <div
+                    key={idx}
+                    className={`p-4 border-l-4 ${style.bg} ${style.border}`}
+                  >
+                    {/* Phase & Resolution Type */}
+                    <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-lg">{incentive.emoji}</span>
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${
-                          incentive.highlight
-                            ? 'bg-green-600 text-white'
-                            : 'bg-gray-200 text-gray-700'
-                        }`}>
-                          {incentive.phase}
+                        <span className={`text-xs font-bold px-2 py-1 rounded ${style.badge}`}>
+                          {scenario.phase}
                         </span>
+                        <span className="font-semibold text-gray-900">{scenario.resolution}</span>
                       </div>
-                      <p className="font-semibold text-gray-900 mt-1">{incentive.name}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{incentive.description}</p>
+                      <div className="text-right">
+                        <p className={`text-xl font-bold ${style.rate}`}>
+                          ${scenario.effectiveRate}/hr
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className={`text-xl font-bold ${
-                        incentive.highlight ? 'text-green-600' : 'text-gray-700'
-                      }`}>
-                        ${incentive.effectiveRate}
-                      </p>
-                      <p className="text-xs text-gray-500">per hour</p>
-                    </div>
-                  </div>
 
-                  <div className="mt-2 flex gap-4 text-xs text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <DollarSign className="w-3 h-3" />
-                      ${incentive.payment.toLocaleString()} total
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      ~{incentive.hours} hrs
-                    </span>
-                  </div>
+                    {/* Outcome */}
+                    <p className="text-sm font-medium text-gray-800">{scenario.outcome}</p>
 
-                  {/* Progress bar showing relative hourly rate */}
-                  <div className="mt-2">
-                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full ${
-                          incentive.highlight
-                            ? 'bg-gradient-to-r from-green-500 to-emerald-400'
-                            : 'bg-gray-400'
-                        }`}
-                        style={{ width: `${(incentive.effectiveRate / 889) * 100}%` }}
-                      />
+                    {/* Reason */}
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">{scenario.reason}</p>
+
+                    {/* Hours Estimate */}
+                    <div className="mt-3 flex items-center justify-between text-xs">
+                      <span className="text-gray-500">
+                        Est. {scenario.estimatedHours} hours to resolution
+                      </span>
+                      <span className="text-gray-500">
+                        ${scenario.totalFee.toLocaleString()} total fee
+                      </span>
+                    </div>
+
+                    {/* Visual Rate Indicator */}
+                    <div className="mt-2">
+                      <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            scenario.tier === 'optimal' ? 'bg-green-500' :
+                            scenario.tier === 'excellent' ? 'bg-emerald-500' :
+                            scenario.tier === 'good' ? 'bg-blue-500' :
+                            'bg-gray-400'
+                          }`}
+                          style={{ width: `${(scenario.effectiveRate / 900) * 100}%` }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-4">
-            <div className="flex items-center gap-2 text-amber-800">
-              <Zap className="w-5 h-5" />
-              <span className="font-bold">Strategy Focus</span>
+          {/* Strategic Implication */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="p-5">
+              <h4 className="font-semibold text-gray-900 mb-2">Strategic Implication</h4>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Aggressive early-phase litigation—particularly discovery motions and
+                suppression filings—offers the highest return on attorney time investment.
+                A Phase 1 or 2 victory delivers the same compensation with
+                <span className="font-semibold"> 60-70% fewer hours</span> than a full trial.
+              </p>
             </div>
-            <p className="text-sm text-amber-700 mt-2">
-              Phase 1 & 2 wins maximize your effective hourly rate.
-              <span className="font-bold"> Focus early motions!</span>
-            </p>
           </div>
         </div>
       </div>
