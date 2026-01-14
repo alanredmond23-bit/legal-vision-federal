@@ -47,9 +47,9 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
       resolution: 'Dismissal',
       outcome: 'Government dismisses case',
       reason: 'Brady/Giglio violations, discovery failures, or prosecutorial misconduct force dismissal',
-      totalFee: 45000,
+      totalFee: 40000,
       estimatedHours: 50,
-      effectiveRate: 900,
+      effectiveRate: 800,
       tier: 'optimal'
     },
     {
@@ -57,9 +57,9 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
       resolution: 'Motion Victory',
       outcome: 'Charges dropped',
       reason: 'Successful suppression motions eliminate key evidence; government cannot proceed',
-      totalFee: 45000,
-      estimatedHours: 85,
-      effectiveRate: 529,
+      totalFee: 40000,
+      estimatedHours: 70,
+      effectiveRate: 571,
       tier: 'excellent'
     },
     {
@@ -67,9 +67,9 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
       resolution: 'Evidentiary Collapse',
       outcome: 'Case dismissed or reduced',
       reason: 'Evidentiary hearings expose fatal weaknesses; government offers dismissal or minimal plea',
-      totalFee: 45000,
-      estimatedHours: 110,
-      effectiveRate: 409,
+      totalFee: 40000,
+      estimatedHours: 100,
+      effectiveRate: 400,
       tier: 'good'
     },
     {
@@ -77,20 +77,10 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
       resolution: 'Favorable Plea',
       outcome: 'No incarceration',
       reason: 'Negotiated resolution with probation, diversion, or deferred adjudication - no jail time',
-      totalFee: 45000,
+      totalFee: 40000,
       estimatedHours: 130,
-      effectiveRate: 346,
+      effectiveRate: 308,
       tier: 'standard'
-    },
-    {
-      phase: 'Phase 5-6',
-      resolution: 'Trial Acquittal',
-      outcome: 'Jury verdict: Not Guilty',
-      reason: 'Full trial results in acquittal on all counts or hung jury forcing dismissal',
-      totalFee: 45000,
-      estimatedHours: 175,
-      effectiveRate: 257,
-      tier: 'extended'
     },
   ];
 
@@ -310,12 +300,12 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
             </div>
             <div className="p-5 bg-gray-50 border-b border-gray-200">
               <p className="text-sm text-gray-700 leading-relaxed">
-                The agreed fee for this matter is <span className="font-bold">$45,000</span> regardless of when the case resolves.
-                However, your <span className="font-semibold">effective hourly rate</span> varies significantly based on
+                The agreed fee for this matter is <span className="font-bold">$40,000</span> regardless of when the case resolves.
+                Your <span className="font-semibold">effective hourly rate</span> varies significantly based on
                 <span className="font-semibold"> when</span> we achieve a favorable outcome.
               </p>
               <p className="text-sm text-gray-600 mt-3 italic">
-                Earlier resolution = fewer billable hours = higher effective rate per hour worked.
+                Earlier resolution = fewer hours worked = higher effective rate.
               </p>
             </div>
           </div>
@@ -383,7 +373,7 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
                             scenario.tier === 'good' ? 'bg-blue-500' :
                             'bg-gray-400'
                           }`}
-                          style={{ width: `${(scenario.effectiveRate / 900) * 100}%` }}
+                          style={{ width: `${(scenario.effectiveRate / 800) * 100}%` }}
                         />
                       </div>
                     </div>
@@ -393,15 +383,28 @@ export default function AttorneyView({ nodes, costs, attorney }: AttorneyViewPro
             </div>
           </div>
 
+          {/* Phase 5-7 Baseline */}
+          <div className="bg-gray-100 rounded-xl border border-gray-300 p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-700">Phase 5, 6, 7 (Trial)</p>
+                <p className="text-xs text-gray-500">Full trial through verdict</p>
+              </div>
+              <div className="text-right">
+                <p className="text-lg font-bold text-gray-600">$300/hr</p>
+                <p className="text-xs text-gray-500">base rate</p>
+              </div>
+            </div>
+          </div>
+
           {/* Strategic Implication */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
             <div className="p-5">
               <h4 className="font-semibold text-gray-900 mb-2">Strategic Implication</h4>
               <p className="text-sm text-gray-700 leading-relaxed">
-                Aggressive early-phase litigation—particularly discovery motions and
-                suppression filings—offers the highest return on attorney time investment.
-                A Phase 1 or 2 victory delivers the same compensation with
-                <span className="font-semibold"> 60-70% fewer hours</span> than a full trial.
+                Winning early maximizes your effective rate. A Phase 1 dismissal yields
+                <span className="font-semibold"> $800/hr</span>—nearly 3x the trial rate.
+                Focus on discovery violations and suppression motions for the highest return.
               </p>
             </div>
           </div>
