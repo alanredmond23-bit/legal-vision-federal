@@ -1,0 +1,1206 @@
+{
+  "motionsGlossary": {
+    "categories": [
+      {
+        "id": "preflight",
+        "name": "Preflight",
+        "description": "Pre-litigation foundation motions",
+        "phase": "phase-0"
+      },
+      {
+        "id": "discovery-taint",
+        "name": "Discovery & Taint",
+        "description": "Discovery demands and warrant challenge motions - WIN HERE",
+        "phase": "phase-1"
+      },
+      {
+        "id": "attack-counts-1",
+        "name": "Attack Counts (1-10)",
+        "description": "Conspiracy and first batch of wire fraud dismissals",
+        "phase": "phase-2"
+      },
+      {
+        "id": "attack-counts-2",
+        "name": "Attack Counts (11-20)",
+        "description": "Second batch wire fraud and procedural motions",
+        "phase": "phase-3"
+      },
+      {
+        "id": "attack-counts-3",
+        "name": "Attack Counts (21-27)",
+        "description": "Tax counts dismissal - Cheek defense",
+        "phase": "phase-4"
+      },
+      {
+        "id": "oversight-press",
+        "name": "Oversight & Press",
+        "description": "Congressional referrals, DOJ complaints, media strategy",
+        "phase": "phase-5"
+      },
+      {
+        "id": "conditional",
+        "name": "Conditional/Pocket",
+        "description": "File only if specific triggers occur",
+        "phase": "conditional"
+      }
+    ],
+    "motions": [
+      {
+        "id": "continuance",
+        "name": "Motion for Continuance",
+        "shortName": "Continuance",
+        "category": "preflight",
+        "winProbability": "90%",
+        "description": "Request to postpone trial date to allow adequate defense preparation. MINIMUM 6 MONTHS REQUIRED.",
+        "legalBasis": "18 U.S.C. § 3161(h)(7)(A) - 'Ends of justice' exclusion",
+        "purpose": "Buy prep time; extend trial deadline from April 22, 2026",
+        "keyArguments": ["27-count case complexity", "315K discovery documents", "Expert witnesses needed", "Substantive pretrial motions pending"],
+        "estimatedHours": 2,
+        "status": "FILE FIRST"
+      },
+      {
+        "id": "rule-16",
+        "name": "Rule 16 Discovery Demand",
+        "shortName": "Discovery",
+        "category": "discovery-taint",
+        "winProbability": "95%",
+        "description": "Federal Rule of Criminal Procedure 16 - requires government to disclose evidence, documents, and materials relevant to the defense",
+        "legalBasis": "Fed. R. Crim. P. 16",
+        "purpose": "Obtain all evidence government intends to use; identify exculpatory materials",
+        "keyArguments": ["Comprehensive demand letter", "12 specific categories", "Rolling production required"],
+        "estimatedHours": 8
+      },
+      {
+        "id": "brady-giglio",
+        "name": "Brady/Giglio Material Demand",
+        "shortName": "Brady/Giglio",
+        "category": "discovery-taint",
+        "winProbability": "85%",
+        "description": "Constitutional requirement for prosecutors to disclose exculpatory evidence (Brady) and impeachment evidence (Giglio)",
+        "legalBasis": "Brady v. Maryland, 373 U.S. 83 (1963); Giglio v. United States, 405 U.S. 150 (1972)",
+        "purpose": "Force disclosure of Groff 302s, Five9 IVRs, plea agreement, cooperation terms",
+        "keyArguments": ["Groff 302s NOT produced", "Prior inconsistent statements withheld", "Cooperation agreement benefits not disclosed"],
+        "criticalEvidence": ["Groff 302s CRITICAL", "Five9 IVR recordings", "Proffer transcripts"],
+        "estimatedHours": 4
+      },
+      {
+        "id": "franks",
+        "name": "Franks Motion",
+        "shortName": "Franks",
+        "category": "discovery-taint",
+        "winProbability": "95%",
+        "description": "Challenge search warrant based on 13+ false or misleading statements in the AOPC (Affidavit of Probable Cause)",
+        "legalBasis": "Franks v. Delaware, 438 U.S. 154 (1978)",
+        "purpose": "Invalidate search warrant; suppress all evidence obtained through tainted warrant",
+        "keyArguments": ["13+ documented misstatements", "Groff information selectively presented", "Material omissions", "Line-by-line AOPC comparison"],
+        "criticalEvidence": ["AOPC misstatement chart", "Groff analysis", "Contradiction packet"],
+        "estimatedHours": 8,
+        "status": "THE MOTION - If granted, case collapses"
+      },
+      {
+        "id": "suppression",
+        "name": "4th Amendment Suppression Motion",
+        "shortName": "Suppress",
+        "category": "discovery-taint",
+        "winProbability": "90%",
+        "description": "Request to exclude evidence obtained in violation of Fourth Amendment rights under invalid warrant",
+        "legalBasis": "Fourth Amendment; Exclusionary Rule; Fruit of Poisonous Tree",
+        "purpose": "Exclude all warrant-derived evidence; eliminate key prosecution exhibits",
+        "keyArguments": ["Fruit of poisonous tree doctrine", "No independent source", "Good faith exception doesn't apply if reckless"],
+        "estimatedHours": 4,
+        "status": "File WITH Franks motion as companion"
+      },
+      {
+        "id": "napue",
+        "name": "Napue Motion",
+        "shortName": "Napue",
+        "category": "discovery-taint",
+        "winProbability": "90%",
+        "description": "Challenge false Grand Jury testimony - Groff statements contradict documentary evidence",
+        "legalBasis": "Napue v. Illinois, 360 U.S. 264 (1959)",
+        "purpose": "Challenge false Grand Jury testimony; document Groff contradictions",
+        "keyArguments": ["Groff statements contradict emails/records", "Material to core elements", "GJ testimony not waivable"],
+        "criticalEvidence": ["Groff contradiction packet", "302s required"],
+        "estimatedHours": 3,
+        "status": "Powerful if 302s obtained"
+      },
+      {
+        "id": "dismiss-conspiracy",
+        "name": "Motion to Dismiss - Conspiracy (Count 1)",
+        "shortName": "Dismiss Count 1",
+        "category": "attack-counts-1",
+        "winProbability": "72%",
+        "description": "Eliminate conspiracy charge - no evidence of explicit agreement between defendant and Groff",
+        "legalBasis": "18 U.S.C. § 371; Fed. R. Crim. P. 12(b)(3)(B)",
+        "purpose": "Eliminate anchor count; show no agreement evidence",
+        "keyArguments": ["No agreement evidence exists", "Groff emails show independence", "Overt acts were employee-conducted", "Delegation is not conspiracy"],
+        "criticalEvidence": ["Groff emails", "Delegation docs"],
+        "estimatedHours": 4,
+        "status": "Backbone count - Groff emails key"
+      },
+      {
+        "id": "dismiss-wire-2-10",
+        "name": "Motion to Dismiss Wire Fraud (Counts 2-10)",
+        "shortName": "Dismiss Wire 2-10",
+        "category": "attack-counts-1",
+        "winProbability": "65%",
+        "description": "Challenge first batch of wire fraud counts based on customer consent documentation",
+        "legalBasis": "18 U.S.C. § 1343; Fed. R. Crim. P. 12(b)(3)(B)",
+        "purpose": "Dismiss 9 wire fraud counts; IVR + DocuSign = customer consent = no fraud",
+        "keyArguments": ["No misrepresentation if disclosure made", "Five9 IVR recordings prove disclosure", "E-sign audit trails document consent"],
+        "criticalEvidence": ["Five9 IVR recordings", "DocuSign audit trails"],
+        "estimatedHours": 6,
+        "status": "DEPENDS ON FIVE9 IVRs - Subpoena critical"
+      },
+      {
+        "id": "dismiss-wire-11-20",
+        "name": "Motion to Dismiss Wire Fraud (Counts 11-20)",
+        "shortName": "Dismiss Wire 11-20",
+        "category": "attack-counts-2",
+        "winProbability": "68%",
+        "description": "Challenge second batch of wire fraud counts - same consent defense",
+        "legalBasis": "18 U.S.C. § 1343; Fed. R. Crim. P. 12(b)(3)(B)",
+        "purpose": "Dismiss remaining wire fraud counts; extend Phase 2 arguments",
+        "keyArguments": ["Same evidence as Counts 2-10", "Consent proven across all counts", "Pattern shows legitimate business"],
+        "estimatedHours": 6
+      },
+      {
+        "id": "sanctions",
+        "name": "Sanctions Motion",
+        "shortName": "Sanctions",
+        "category": "attack-counts-2",
+        "winProbability": "75%",
+        "description": "Sanction government for pattern of misconduct: AOPC misstatements + Brady withholding + FBI victim page",
+        "legalBasis": "Fed. R. Civ. P. 37; Inherent Court Powers; 28 U.S.C. § 1927",
+        "purpose": "Document government misconduct pattern; preserve appeal issue",
+        "keyArguments": ["Pattern of misconduct established", "AOPC chart + Brady ledger + FBI page", "Reckless behavior not just negligent"],
+        "criticalEvidence": ["AOPC chart", "Brady deficiency ledger", "FBI victim page"],
+        "estimatedHours": 4,
+        "status": "File after govt response if they double down"
+      },
+      {
+        "id": "speedy-trial",
+        "name": "Speedy Trial Motion",
+        "shortName": "Speedy Trial",
+        "category": "attack-counts-2",
+        "winProbability": "70%",
+        "description": "Enforce Sixth Amendment speedy trial right; explore 5-year delay prejudice",
+        "legalBasis": "6th Amendment; 18 U.S.C. § 3161 et seq.; Barker v. Wingo factors",
+        "purpose": "Calculate excludable/non-excludable time; document prejudice",
+        "keyArguments": ["Barker factors: length, reason, assertion, prejudice", "Witness memory fade", "Loss of evidence", "5-year delay"],
+        "estimatedHours": 3,
+        "status": "Backup - Preserves appeal even if denied"
+      },
+      {
+        "id": "dismiss-tax",
+        "name": "Motion to Dismiss Tax Counts (Counts 21-27)",
+        "shortName": "Dismiss Tax",
+        "category": "attack-counts-3",
+        "winProbability": "85%",
+        "description": "Eliminate all 7 tax counts using Cheek defense - good faith reliance on CPA negates willfulness",
+        "legalBasis": "26 U.S.C. § 7201, § 7203; Cheek v. United States, 498 U.S. 192 (1991)",
+        "purpose": "Eliminate 26% of total counts; CPA reliance defeats willfulness element",
+        "keyArguments": ["Cheek is legal defense not jury question", "CPA Malcolm Smith ready to testify", "ERC documents support legitimate tax position"],
+        "criticalEvidence": ["CPA records", "ERC documents", "Malcolm Smith witness"],
+        "estimatedHours": 5,
+        "status": "HIGHEST WIN PROBABILITY"
+      },
+      {
+        "id": "bill-of-particulars",
+        "name": "Bill of Particulars",
+        "shortName": "Particulars",
+        "category": "attack-counts-3",
+        "winProbability": "70%",
+        "description": "Force government to specify: which wires, which dates, which victims",
+        "legalBasis": "Fed. R. Crim. P. 7(f)",
+        "purpose": "Lock government into specific theory; expose indictment vagueness",
+        "keyArguments": ["Indictment vague on wire count specificity", "Due process requires notice", "Locks govt into theory for trial"],
+        "estimatedHours": 2,
+        "status": "Useful for trial - locks govt theory"
+      },
+      {
+        "id": "vindictive-prosecution",
+        "name": "Vindictive Prosecution Motion",
+        "shortName": "Vindictive",
+        "category": "oversight-press",
+        "winProbability": "65%",
+        "description": "Challenge 27-count superseding as retaliatory (6 → 27 counts after defense activity)",
+        "legalBasis": "Prosecutorial Vindictiveness Doctrine; Blackledge v. Perry",
+        "purpose": "Challenge charge escalation; feeds oversight campaign",
+        "keyArguments": ["Oct 2024: 6 tax counts only", "Nov-Dec: Defense activity begins", "May 2025: 27 counts (conspiracy + wire fraud ADDED)", "Aug 2025: FBI victim page"],
+        "estimatedHours": 3,
+        "status": "Strong narrative - Feeds oversight"
+      },
+      {
+        "id": "motion-to-compel",
+        "name": "Rolling Discovery Motions",
+        "shortName": "Compel",
+        "category": "discovery-taint",
+        "winProbability": "80%",
+        "description": "Compel rolling discovery production; document government deficiencies weekly",
+        "legalBasis": "Fed. R. Crim. P. 16(d)(2)",
+        "purpose": "Enforce discovery rights; feed sanctions motion; document delays",
+        "keyArguments": ["Specific gaps documented weekly", "Government burden to produce", "Deficiency ledger updated regularly"],
+        "estimatedHours": 4,
+        "status": "ONGOING - Feeds sanctions"
+      },
+      {
+        "id": "motion-sever",
+        "name": "Motion to Sever",
+        "shortName": "Sever",
+        "category": "conditional",
+        "winProbability": "60%",
+        "description": "Separate trials to avoid spillover prejudice from co-defendant Groff",
+        "legalBasis": "Fed. R. Crim. P. 14(a); Bruton v. United States",
+        "purpose": "Prevent spillover prejudice; separate Groff cooperation issues",
+        "keyArguments": ["Groff cooperation creates antagonistic defense", "Bruton issue with Groff testimony", "Prejudice outweighs efficiency"],
+        "estimatedHours": 2,
+        "status": "Only if trial proceeds - Keep in pocket"
+      },
+      {
+        "id": "motion-in-limine",
+        "name": "Motions in Limine",
+        "shortName": "In Limine",
+        "category": "conditional",
+        "winProbability": "75%",
+        "description": "Pre-trial motions to exclude inflammatory/prejudicial evidence",
+        "legalBasis": "Fed. R. Evid. 403, 404(b)",
+        "purpose": "Exclude old audits, unrelated complaints, 'pattern' evidence",
+        "keyArguments": ["Prejudicial value outweighs probative", "Prior acts inadmissible for propensity", "Character evidence rules"],
+        "estimatedHours": 4,
+        "status": "Later stage - after discovery"
+      },
+      {
+        "id": "recusal",
+        "name": "Recusal Motion",
+        "shortName": "Recusal",
+        "category": "conditional",
+        "winProbability": "40%",
+        "description": "Remove Judge Schmehl if bias/impartiality issues surface - LAST RESORT",
+        "legalBasis": "28 U.S.C. § 455",
+        "purpose": "Remove biased judge; preserve fair trial rights",
+        "keyArguments": ["Must have documented facts of bias", "Reasonable observer standard", "Cannot file on speculation"],
+        "estimatedHours": 1,
+        "status": "LAST RESORT - Do not file without grounds"
+      },
+      {
+        "id": "daubert",
+        "name": "Daubert Challenge",
+        "shortName": "Daubert",
+        "category": "conditional",
+        "winProbability": "60%",
+        "description": "Exclude/limit government expert opinions that fail reliability standards",
+        "legalBasis": "Fed. R. Evid. 702; Daubert v. Merrell Dow; Kumho Tire",
+        "purpose": "Exclude unreliable expert testimony; challenge methodology",
+        "keyArguments": ["Expert must be qualified", "Methodology must be reliable", "Opinion must fit facts"],
+        "estimatedHours": 8,
+        "status": "After expert disclosures"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "phase-0",
+      "name": "Phase 0: Preflight",
+      "dateRange": "Jan 14, 2026 (TODAY)",
+      "description": "ACTIVE NOW - Bill Rush negotiating continuance. MINIMUM 6 MONTHS REQUIRED.",
+      "status": "active",
+      "minimumAcceptable": "6 months (October 22, 2026)"
+    },
+    {
+      "id": "phase-1",
+      "name": "Phase 1: Discovery & Taint",
+      "dateRange": "Jan 13-28, 2026",
+      "description": "WIN HERE - Establish foundation through Discovery, Brady/Giglio, Franks, and Suppression"
+    },
+    {
+      "id": "phase-2",
+      "name": "Phase 2: Attack Counts (1-10)",
+      "dateRange": "Jan 29 - Feb 14, 2026",
+      "description": "Target Conspiracy (Count 1) and Wire Fraud Counts 2-10"
+    },
+    {
+      "id": "phase-3",
+      "name": "Phase 3: Attack Counts (11-20)",
+      "dateRange": "Feb 15 - Feb 28, 2026",
+      "description": "Continue Wire Fraud attack on Counts 11-20"
+    },
+    {
+      "id": "phase-4",
+      "name": "Phase 4: Attack Counts (21-27)",
+      "dateRange": "Mar 1-14, 2026",
+      "description": "Tax Evasion (21-24) and Failure to Pay (25-27) - CPA Good Faith Defense"
+    },
+    {
+      "id": "phase-5",
+      "name": "Phase 5: Oversight & Press",
+      "dateRange": "Gated - After First Win",
+      "description": "Congressional referral, DOJ OIG complaint, House Judiciary, House Oversight, Press strategy"
+    }
+  ],
+  "moves": [
+    {
+      "id": "continuance-negotiation",
+      "type": "defense",
+      "title": "Bill Rush Continuance Negotiation",
+      "phase": "phase-0",
+      "details": {
+        "deadline": "2026-01-14",
+        "clientTask": "DO NOT agree to anything under 6 months without calling attorney first",
+        "attorneyTask": "Bill Rush direct negotiation with AUSA. MINIMUM 6 MONTHS (October 22, 2026). If under 6 months offered, STOP and escalate.",
+        "hours": 2,
+        "probability": 0.85,
+        "evidence": ["Case complexity: 27 counts", "315K discovery documents", "Superseding indictment 7 months after original", "J6 precedent: 12-24 month continuances for comparable volumes"],
+        "minimumAcceptable": "6 months from April 22, 2026 = October 22, 2026"
+      },
+      "responses": {
+        "A": {
+          "probability": 0.15,
+          "text": "90-Day Continuance → July 21, 2026 Trial",
+          "status": "UNACCEPTABLE",
+          "counter": {
+            "brief": "REJECT - Below 6-month minimum. Counter with formal motion for 6+ months.",
+            "full": "DO NOT ACCEPT. This is below our 6-month floor. Response: (1) Thank AUSA for offer but indicate insufficient for case complexity, (2) Counter-propose 6 months minimum (October 22, 2026), (3) If rejected, immediately file Motion for Continuance with court citing: 315K documents, superseding indictment delay, J6 case precedents.",
+            "nextAction": "file-continuance-motion"
+          },
+          "govtCounter": {
+            "ifWeFile": "Govt will oppose motion for 6+ months",
+            "theirArgument": "Case has been pending sufficient time; defendant caused delays",
+            "ourRebuttal": {
+              "brief": "Govt had 2.5 years to investigate. Superseding indictment proves complexity.",
+              "full": "(1) Government spent 2.5 years investigating - cannot claim case is simple. (2) Superseding indictment filed 7 months after original proves government itself needed more time. (3) 315K discovery pages produced late. (4) Cite J6 Capitol cases: 12-24 month continuances for comparable data volumes. (5) Due process requires adequate defense prep.",
+              "authority": "18 U.S.C. § 3161(h)(7)(A); U.S. v. Taylor (D.D.C. 2021) - J6 continuances"
+            }
+          }
+        },
+        "B": {
+          "probability": 0.40,
+          "text": "180-Day Continuance → October 19, 2026 Trial",
+          "status": "ACCEPTABLE - MEETS MINIMUM",
+          "counter": {
+            "brief": "ACCEPT - Meets 6-month minimum. Proceed with full defense strategy.",
+            "full": "Accept 180 days. This meets our 6-month floor. Allows complete Phase 1-4 execution with proper briefing intervals. Maintains pressure while ensuring thorough preparation. Proceed with standard timeline. Document acceptance in writing.",
+            "nextAction": "standard-execution"
+          }
+        },
+        "C": {
+          "probability": 0.25,
+          "text": "360-Day Continuance → April 17, 2027 Trial",
+          "status": "IDEAL - MAXIMUM PREPARATION",
+          "counter": {
+            "brief": "ACCEPT - Exceeds minimum. Use for comprehensive defense preparation.",
+            "full": "Accept 360 days immediately. Use extra time for: (1) Comprehensive Everlaw analysis of all 315K docs, (2) Expert witness development - CPA, forensic accountant, (3) Parallel oversight/press strategy with congressional referrals, (4) Potential civil litigation prep. (5) Witness interviews and impeachment prep.",
+            "nextAction": "extended-preparation"
+          }
+        },
+        "D": {
+          "probability": 0.20,
+          "text": "No Continuance - April 22, 2026 Trial Stands",
+          "status": "EMERGENCY - FILE IMMEDIATELY",
+          "counter": {
+            "brief": "FILE MOTION SAME DAY - Motion for Continuance citing due process violation",
+            "full": "EMERGENCY PROTOCOL: (1) File formal Motion for Continuance within 24 hours, (2) Cite complexity: 27 counts, 315K docs, superseding indictment, (3) Request minimum 6 months (October 2026), ideal 12 months (April 2027), (4) Invoke 18 U.S.C. § 3161(h)(7)(A) ends-of-justice exclusion, (5) Request expedited hearing before Judge Schmehl.",
+            "nextAction": "emergency-motion"
+          },
+          "govtCounter": {
+            "ifWeFile": "Govt will oppose continuance motion",
+            "theirArgument": "Defendant waiving speedy trial rights; case simple; defendant causing delay",
+            "ourRebuttal": {
+              "brief": "27 counts + 315K docs + superseding indictment = complex case requiring adequate prep",
+              "full": "(1) We are NOT waiving speedy trial - we invoke ends-of-justice exclusion. (2) Case is NOT simple: 27 felony counts, 315K discovery documents, multiple fraud theories. (3) WE did not cause delay - govt filed superseding indictment 7 months after original. (4) Constitutional right to effective assistance of counsel requires adequate prep time. (5) J6 precedent: courts granted 12-24 months for similar volumes.",
+              "authority": "Strickland v. Washington; 18 U.S.C. § 3161(h)(7)(A)"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "discovery", "probability": 0.65, "description": "6+ month continuance granted - proceed to Phase 1" },
+        "partial": { "cascadeTo": "file-continuance-motion", "probability": 0.20, "description": "Under 6 months offered - file motion" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.10, "description": "Negotiation ongoing" },
+        "lose": { "cascadeTo": "file-continuance-motion", "probability": 0.05, "description": "No continuance - file emergency motion" }
+      }
+    },
+    {
+      "id": "file-continuance-motion",
+      "type": "defense",
+      "title": "Motion for Continuance (6-12 Months)",
+      "phase": "phase-0",
+      "details": {
+        "deadline": "Within 24 hours of govt refusal",
+        "clientTask": "Review and approve motion filing; sign speedy trial waiver if required",
+        "attorneyTask": "Draft and file Motion for Continuance citing 18 U.S.C. § 3161(h)(7)(A); prepare for opposition",
+        "hours": 6,
+        "probability": 0.75,
+        "evidence": ["315K discovery documents", "27-count superseding indictment", "J6 case precedents", "Due process requirements"],
+        "requestedContinuance": "Minimum 6 months (October 2026), Ideal 12 months (April 2027)"
+      },
+      "responses": {
+        "A": {
+          "probability": 0.30,
+          "text": "Court grants 6-month continuance → October 22, 2026",
+          "counter": {
+            "brief": "WIN - Proceed with full Phase 1-4 execution",
+            "full": "Court has granted minimum acceptable continuance. Proceed immediately with Phase 1: Discovery & Taint motions. Standard briefing schedule applies. Document ruling for record.",
+            "nextAction": "discovery"
+          }
+        },
+        "B": {
+          "probability": 0.25,
+          "text": "Court grants 12-month continuance → April 22, 2027",
+          "counter": {
+            "brief": "IDEAL WIN - Maximum preparation time secured",
+            "full": "Court has granted ideal continuance. Use full year for: (1) Exhaustive discovery review, (2) Expert development, (3) Witness preparation, (4) Oversight/press strategy. Set internal milestones to maintain momentum.",
+            "nextAction": "extended-preparation"
+          }
+        },
+        "C": {
+          "probability": 0.25,
+          "text": "Court grants 3-4 months only → July-August 2026",
+          "counter": {
+            "brief": "PARTIAL - Below minimum but workable. File motion for reconsideration OR compress timeline.",
+            "full": "Court granted less than requested. Options: (1) File Motion for Reconsideration emphasizing specific prejudice, (2) If denied, compress Phase 1-4 into available time, (3) Prioritize highest-impact motions: Franks, Brady, Suppress, (4) May need to defer some count-specific motions.",
+            "nextAction": "motion-for-reconsideration"
+          },
+          "govtCounter": {
+            "ifWeAppeal": "Govt will oppose reconsideration",
+            "theirArgument": "Court has ruled; defendant got some continuance; case must proceed",
+            "ourRebuttal": {
+              "brief": "3-4 months insufficient for 315K docs + 27 counts. Specific prejudice shown.",
+              "full": "(1) Specify exactly what cannot be completed in time allotted, (2) Document Everlaw analysis showing pages-per-day requirement impossible, (3) Show specific motions that cannot be filed, (4) Expert witness unavailability, (5) Constitutional right to effective counsel being violated."
+            }
+          }
+        },
+        "D": {
+          "probability": 0.20,
+          "text": "Court denies motion - April 22, 2026 trial date stands",
+          "counter": {
+            "brief": "APPEAL + COMPRESSED EXECUTION - Preserve issue for appeal while executing Phase 1",
+            "full": "Court has denied continuance. (1) File Notice of Interlocutory Appeal if available, (2) Preserve due process violation for post-trial appeal, (3) Execute compressed Phase 1: File Franks, Brady, Suppress immediately, (4) Request expedited briefing on all motions, (5) Document every instance of inadequate prep time for appellate record.",
+            "nextAction": "compressed-execution"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "discovery", "probability": 0.55, "description": "6+ months granted - full strategy execution" },
+        "partial": { "cascadeTo": "discovery", "probability": 0.25, "description": "3-4 months granted - compressed execution" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.10, "description": "Motion pending" },
+        "lose": { "cascadeTo": null, "probability": 0.10, "description": "Motion denied - preserve for appeal" }
+      }
+    },
+    {
+      "id": "discovery",
+      "type": "defense",
+      "title": "Rule 16 Discovery Demand",
+      "phase": "phase-1",
+      "details": {
+        "deadline": "2026-01-20",
+        "clientTask": "Provide complete financial records, all communication logs, business documentation",
+        "attorneyTask": "Draft comprehensive Rule 16 demand letter; identify specific discovery needs",
+        "hours": 8,
+        "cost": 2400,
+        "probability": 0.95,
+        "evidence": ["Financial records inventory", "Communication logs list", "Witness contact info"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.25,
+          "text": "Full compliance - produce all requested materials",
+          "counter": {
+            "brief": "Verify completeness; cross-reference with known evidence",
+            "full": "Review production for gaps. Compare against indictment exhibits. Identify any Jencks material withheld. Prepare supplemental demand if deficiencies found.",
+            "nextAction": "review-production"
+          }
+        },
+        "B": {
+          "probability": 0.40,
+          "text": "Partial compliance - claim privilege on some documents",
+          "counter": {
+            "brief": "Challenge privilege claims; demand privilege log",
+            "full": "File motion to compel privilege log per FRCP 26(b)(5). Challenge work product claims for factual documents. Request in camera review of disputed items.",
+            "nextAction": "motion-to-compel"
+          }
+        },
+        "C": {
+          "probability": 0.20,
+          "text": "Motion for protective order - sensitive materials",
+          "counter": {
+            "brief": "Oppose protective order; show necessity for defense",
+            "full": "Argue protective order unduly burdens defense preparation. Propose reasonable confidentiality measures. Cite defendant's Sixth Amendment right to effective assistance.",
+            "nextAction": "oppose-protective"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Delay tactics - request extension of time",
+          "counter": {
+            "brief": "Object to delay; invoke speedy trial concerns",
+            "full": "File opposition to extension. Cite government's superior resources. Note prejudice to defendant from delay. Request court impose production schedule.",
+            "nextAction": "oppose-extension"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": null, "probability": 0.40, "description": "Full production received" },
+        "partial": { "cascadeTo": null, "probability": 0.35, "description": "Most materials produced" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.20, "description": "Ongoing negotiations" },
+        "lose": { "cascadeTo": null, "probability": 0.05, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "brady",
+      "type": "defense",
+      "title": "Brady/Giglio Material Demand",
+      "phase": "phase-1",
+      "details": {
+        "deadline": "2026-01-22",
+        "clientTask": "Identify potential exculpatory witnesses and evidence; document Groff credibility issues",
+        "attorneyTask": "File formal Brady demand; document specific exculpatory evidence expected",
+        "hours": 6,
+        "cost": 1800,
+        "probability": 0.90,
+        "evidence": ["Groff criminal history", "Groff cooperation agreement", "Witness impeachment material"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.20,
+          "text": "Produce Brady material immediately",
+          "counter": {
+            "brief": "Review for completeness; verify Giglio on all witnesses",
+            "full": "Examine production for all cooperator agreements, witness criminal histories, prior inconsistent statements. Verify 302s produced for all interviews.",
+            "nextAction": "review-brady"
+          }
+        },
+        "B": {
+          "probability": 0.35,
+          "text": "Claim no Brady material exists",
+          "counter": {
+            "brief": "Document known exculpatory evidence; file motion to compel",
+            "full": "Itemize specific Brady material known to exist: Groff's cooperation agreement, financial records showing legitimate business, Five9 IVR recordings. Request sanctions for non-disclosure.",
+            "nextAction": "motion-to-compel-brady"
+          }
+        },
+        "C": {
+          "probability": 0.30,
+          "text": "Partial disclosure with redactions",
+          "counter": {
+            "brief": "Challenge redactions; demand unredacted versions",
+            "full": "File motion challenging overbroad redactions. Request in camera review. Argue defendant entitled to complete impeachment material under Giglio.",
+            "nextAction": "challenge-redactions"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Request in camera review by court",
+          "counter": {
+            "brief": "Support in camera review; prepare specific questions",
+            "full": "Prepare detailed submission for court identifying specific documents and why each is material to defense. Request presence at in camera review if permitted.",
+            "nextAction": "in-camera-brief"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "franks", "probability": 0.35, "description": "Full Brady disclosure - strengthens Franks" },
+        "partial": { "cascadeTo": null, "probability": 0.40, "description": "Some material disclosed" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.20, "description": "Ongoing disclosure" },
+        "lose": { "cascadeTo": null, "probability": 0.05, "description": "Demand denied" }
+      }
+    },
+    {
+      "id": "franks",
+      "type": "defense",
+      "title": "Franks Motion",
+      "phase": "phase-1",
+      "details": {
+        "deadline": "2026-01-28",
+        "clientTask": "Draft D1-D5; AOPC chart showing misstatements; compile exhibits",
+        "attorneyTask": "Review D6; improve citations; file CM/ECF",
+        "hours": 8,
+        "cost": 2400,
+        "probability": 0.65,
+        "evidence": ["AOPC timeline chart", "8+ documented misstatements", "Groff credibility evidence", "Warrant affidavit comparison"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.30,
+          "text": "Affidavit accurate, no material misstatements",
+          "counter": {
+            "brief": "8+ misstatements documented = pattern, not isolated error",
+            "full": "Document each misstatement with exhibit reference. Cite Third Circuit pattern standard from Wilson v. Russo. Show reckless disregard for truth. Request evidentiary hearing.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "B": {
+          "probability": 0.35,
+          "text": "Probable cause survives excision of challenged statements",
+          "counter": {
+            "brief": "Remove Groff statements + omissions = NO PC remains",
+            "full": "Demonstrate that removing tainted Groff statements and material omissions leaves insufficient independent basis for PC. Use AOPC timeline to show warrant dependency on false info.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.20,
+          "text": "Insufficient preliminary showing for hearing",
+          "counter": {
+            "brief": "Franks standard met: specific allegations + offer of proof",
+            "full": "Cite Franks v. Delaware two-prong test. Show specific false statements identified. Provide offer of proof through attached exhibits. Request hearing to develop record.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Good faith exception applies",
+          "counter": {
+            "brief": "No good faith when affiant made knowing/reckless false statements",
+            "full": "Good faith exception under Leon inapplicable where affiant himself made misstatements. Cite Third Circuit holding that good faith cannot save warrant based on deliberately or recklessly false information.",
+            "nextAction": "reply-brief"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "suppress", "probability": 0.35, "description": "Franks hearing granted - CASCADE to suppression" },
+        "partial": { "cascadeTo": null, "probability": 0.25, "description": "Hearing on some issues" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.25, "description": "Matter taken under advisement" },
+        "lose": { "cascadeTo": null, "probability": 0.15, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "suppress",
+      "type": "defense",
+      "title": "Suppression Motion",
+      "phase": "phase-1",
+      "details": {
+        "deadline": "2026-01-28",
+        "clientTask": "Provide all details about wire transfer origins and authorization chain",
+        "attorneyTask": "Draft suppression motion; research Fourth Amendment issues",
+        "hours": 15,
+        "cost": 4500,
+        "probability": 0.35,
+        "evidence": ["Warrant analysis", "Chain of custody issues", "Scope of search documentation"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.15,
+          "text": "Concede suppression on some evidence",
+          "counter": {
+            "brief": "Accept partial win; argue for broader suppression",
+            "full": "Document government concession. Argue fruit of poisonous tree extends to all derivative evidence. Request complete suppression of all warrant-derived material.",
+            "nextAction": "expand-suppression"
+          }
+        },
+        "B": {
+          "probability": 0.45,
+          "text": "Oppose - argue good faith exception applies",
+          "counter": {
+            "brief": "Good faith fails where warrant facially deficient",
+            "full": "Argue Leon good faith exception inapplicable: (1) affiant lied; (2) magistrate abandoned judicial role; (3) warrant facially deficient; (4) affidavit so lacking PC that no reasonable officer would rely.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.25,
+          "text": "File sur-reply with additional case authority",
+          "counter": {
+            "brief": "Respond with distinguishing authority",
+            "full": "Analyze government's new cases. Distinguish on facts. Cite more recent Third Circuit authority. Request oral argument to address new issues.",
+            "nextAction": "sur-sur-reply"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Request evidentiary hearing on suppression",
+          "counter": {
+            "brief": "Welcome hearing - prepare witness examination",
+            "full": "Prepare cross-examination of case agent. Subpoena relevant witnesses. Prepare demonstrative exhibits showing timeline of constitutional violations.",
+            "nextAction": "hearing-prep"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "wire-dismiss", "probability": 0.30, "description": "Evidence suppressed - CASCADE to wire dismissal" },
+        "partial": { "cascadeTo": null, "probability": 0.25, "description": "Some evidence suppressed" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.30, "description": "Hearing scheduled" },
+        "lose": { "cascadeTo": null, "probability": 0.15, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "continuance",
+      "type": "defense",
+      "title": "Motion for Continuance",
+      "phase": "phase-1",
+      "details": {
+        "deadline": "2026-01-20",
+        "clientTask": "Document preparation needs; list outstanding discovery",
+        "attorneyTask": "File continuance motion; propose new schedule",
+        "hours": 2,
+        "cost": 600,
+        "probability": 0.85,
+        "evidence": ["Discovery status report", "Preparation timeline", "Expert availability"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.50,
+          "text": "No objection to reasonable continuance",
+          "counter": {
+            "brief": "Finalize agreed order; confirm new dates",
+            "full": "Draft proposed order with specific new deadlines. Coordinate with court clerk. Confirm expert witness availability for new dates.",
+            "nextAction": "agreed-order"
+          }
+        },
+        "B": {
+          "probability": 0.25,
+          "text": "Oppose - case has been pending sufficient time",
+          "counter": {
+            "brief": "Document complexity; cite superseding indictment delay",
+            "full": "Show case complexity: 27 counts, 315K discovery documents, superseding indictment filed 7 months after original. Argue government cannot create delay then oppose defense continuance.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.15,
+          "text": "Agree to shorter continuance only",
+          "counter": {
+            "brief": "Accept compromise if workable; counter-propose if not",
+            "full": "Evaluate if shorter period allows adequate preparation. If insufficient, document specific tasks requiring additional time. Propose middle-ground schedule.",
+            "nextAction": "negotiate"
+          }
+        },
+        "D": {
+          "probability": 0.10,
+          "text": "Request speedy trial waiver as condition",
+          "counter": {
+            "brief": "Carefully evaluate waiver terms",
+            "full": "Review waiver language carefully. Ensure waiver is limited to specific period. Preserve speedy trial arguments for any future delays caused by government.",
+            "nextAction": "waiver-review"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": null, "probability": 0.70, "description": "Continuance granted" },
+        "partial": { "cascadeTo": null, "probability": 0.20, "description": "Shorter continuance granted" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.05, "description": "Hearing scheduled" },
+        "lose": { "cascadeTo": null, "probability": 0.05, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "conspiracy-dismiss",
+      "type": "defense",
+      "title": "Motion to Dismiss Count 1 (Conspiracy)",
+      "phase": "phase-2",
+      "details": {
+        "deadline": "2026-02-10",
+        "clientTask": "Document lack of agreement evidence; show Groff acted independently",
+        "attorneyTask": "Draft dismissal motion; cite Third Circuit conspiracy standards",
+        "hours": 6,
+        "cost": 1800,
+        "probability": 0.72,
+        "evidence": ["Delegation documents", "Org charts", "Emails showing Groff's independent decisions"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.15,
+          "text": "Dismiss conspiracy count",
+          "counter": {
+            "brief": "Accept win; preserve for appeal if partial",
+            "full": "Document dismissal ruling. If government appeals, prepare opposition brief. Use ruling to support remaining motion arguments.",
+            "nextAction": "preserve-ruling"
+          }
+        },
+        "B": {
+          "probability": 0.45,
+          "text": "Oppose - sufficient evidence of agreement",
+          "counter": {
+            "brief": "No agreement proof - Groff wasn't in room for key decisions",
+            "full": "Challenge government's evidence of agreement. Show Groff made decisions independently. Cite emails where Groff acted without defendant's knowledge. Request Franks-type hearing on conspiracy evidence.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.25,
+          "text": "Argue co-conspirator statements admissible",
+          "counter": {
+            "brief": "Hearsay rules require independent proof of conspiracy first",
+            "full": "Cite Third Circuit requirement that conspiracy must be proven by independent evidence before co-conspirator statements are admissible. Challenge circular reasoning.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Request evidentiary hearing",
+          "counter": {
+            "brief": "Welcome hearing - expose lack of agreement evidence",
+            "full": "Prepare to cross-examine case agent on specific evidence of agreement. Show government relies entirely on Groff's self-serving statements. Document lack of documentary proof.",
+            "nextAction": "hearing-prep"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": null, "probability": 0.35, "description": "Count 1 dismissed" },
+        "partial": { "cascadeTo": null, "probability": 0.30, "description": "Narrowed conspiracy theory" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.25, "description": "Under advisement" },
+        "lose": { "cascadeTo": null, "probability": 0.10, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "wire-2-10",
+      "type": "defense",
+      "title": "Motion to Dismiss Wire Fraud (Counts 2-10)",
+      "phase": "phase-2",
+      "details": {
+        "deadline": "2026-02-14",
+        "clientTask": "Compile Five9 IVR recordings; DocuSign consent records for Counts 2-10",
+        "attorneyTask": "Draft dismissal motion targeting first batch of wire counts",
+        "hours": 8,
+        "cost": 2400,
+        "probability": 0.65,
+        "evidence": ["Five9 IVR recordings", "DocuSign audit trails", "Customer consent documentation"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.10,
+          "text": "Dismiss some of Counts 2-10",
+          "counter": {
+            "brief": "Accept partial win; extend reasoning to remaining counts",
+            "full": "Document which counts dismissed. Show same consent evidence exists for all counts. File supplemental brief extending dismissal argument.",
+            "nextAction": "expand-dismissal"
+          }
+        },
+        "B": {
+          "probability": 0.50,
+          "text": "Oppose - scheme and artifice proven",
+          "counter": {
+            "brief": "IVR + DocuSign = customer consent = no fraud",
+            "full": "Present IVR recordings showing disclosures made. DocuSign proves customer signed. No fraud where customer fully informed and consented. Challenge 'scheme' characterization.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.25,
+          "text": "Argue materiality is jury question",
+          "counter": {
+            "brief": "No reasonable jury could find fraud with documented consent",
+            "full": "Cite standard: even on summary judgment, court must assess sufficiency of evidence. Complete consent documentation negates fraud as matter of law.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Request Rule 16 conference first",
+          "counter": {
+            "brief": "Agree to conference; use to narrow issues",
+            "full": "Use Rule 16 conference to establish undisputed facts about consent documentation. Lock in government's theory for later impeachment.",
+            "nextAction": "conference-prep"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "wire-11-20", "probability": 0.25, "description": "Counts 2-10 dismissed - CASCADE" },
+        "partial": { "cascadeTo": null, "probability": 0.30, "description": "Some counts dismissed" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.30, "description": "Under advisement" },
+        "lose": { "cascadeTo": null, "probability": 0.15, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "wire-11-20",
+      "type": "defense",
+      "title": "Motion to Dismiss Wire Fraud (Counts 11-20)",
+      "phase": "phase-3",
+      "details": {
+        "deadline": "2026-02-28",
+        "clientTask": "Compile Five9 IVR recordings; DocuSign consent records for Counts 11-20",
+        "attorneyTask": "Draft dismissal motion building on Phase 2 arguments",
+        "hours": 6,
+        "cost": 1800,
+        "probability": 0.68,
+        "evidence": ["Five9 IVR recordings", "DocuSign audit trails", "ERC documentation", "Refund records"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.15,
+          "text": "Dismiss remaining wire counts",
+          "counter": {
+            "brief": "Accept full wire fraud dismissal",
+            "full": "Document complete wire fraud dismissal. Prepare for government appeal. Use ruling to strengthen tax count defense.",
+            "nextAction": "preserve-ruling"
+          }
+        },
+        "B": {
+          "probability": 0.45,
+          "text": "Oppose - distinguish from earlier dismissed counts",
+          "counter": {
+            "brief": "Same evidence, same result - consent proven",
+            "full": "Show government cannot distinguish these counts. Same IVR system, same DocuSign process. If consent defeated earlier counts, it defeats these.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.25,
+          "text": "Argue pattern evidence supports scheme",
+          "counter": {
+            "brief": "Pattern of legitimate business, not fraud",
+            "full": "Reframe pattern: consistent compliance procedures, uniform consent documentation, standard business practices. Pattern proves legitimacy.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Request consolidated hearing with Phase 2 motion",
+          "counter": {
+            "brief": "Agree to consolidation - efficiency benefits defense",
+            "full": "Consolidated hearing allows comprehensive presentation of consent evidence. Prevents government from re-litigating settled issues.",
+            "nextAction": "hearing-prep"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": null, "probability": 0.30, "description": "Counts 11-20 dismissed (combined: 70% of case)" },
+        "partial": { "cascadeTo": null, "probability": 0.30, "description": "Some counts dismissed" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.25, "description": "Under advisement" },
+        "lose": { "cascadeTo": null, "probability": 0.15, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "tax-dismiss",
+      "type": "defense",
+      "title": "Motion to Dismiss Tax Counts (21-27)",
+      "phase": "phase-4",
+      "details": {
+        "deadline": "2026-03-10",
+        "clientTask": "Draft brief; compile CPA records from Malcolm Smith",
+        "attorneyTask": "Review; coordinate with CPA; file CM/ECF",
+        "hours": 5,
+        "cost": 1500,
+        "probability": 0.85,
+        "evidence": ["CPA engagement records", "Tax return preparation documentation", "Professional advice reliance evidence"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.25,
+          "text": "Dismiss all tax counts",
+          "counter": {
+            "brief": "Accept complete tax dismissal - 26% of case eliminated",
+            "full": "Document complete dismissal of Counts 21-27. Government case reduced to wire fraud only. Strengthen remaining defense strategy.",
+            "nextAction": "preserve-ruling"
+          }
+        },
+        "B": {
+          "probability": 0.40,
+          "text": "Oppose - willfulness is jury question",
+          "counter": {
+            "brief": "Good faith reliance on CPA negates willfulness as matter of law",
+            "full": "Cite Cheek v. United States - good faith belief negates willfulness element. Document complete reliance on licensed CPA Malcolm Smith. Show no evidence defendant knew returns were incorrect.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "C": {
+          "probability": 0.20,
+          "text": "Argue reliance defense goes to weight not admissibility",
+          "counter": {
+            "brief": "Reliance defense can warrant dismissal when undisputed",
+            "full": "Distinguish cases where reliance was disputed. Here, CPA records are uncontroverted. No rational jury could find willfulness when defendant followed professional advice completely.",
+            "nextAction": "reply-brief"
+          }
+        },
+        "D": {
+          "probability": 0.15,
+          "text": "Request evidentiary hearing on CPA reliance",
+          "counter": {
+            "brief": "Welcome hearing - CPA testimony will be compelling",
+            "full": "Prepare CPA testimony documenting all advice given. Subpoena complete file. Show defendant followed every recommendation. Demonstrate no willful intent.",
+            "nextAction": "hearing-prep"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "oversight", "probability": 0.40, "description": "Tax counts 21-27 dismissed - CASCADE to Oversight" },
+        "partial": { "cascadeTo": null, "probability": 0.30, "description": "Some tax counts dismissed" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.20, "description": "Hearing scheduled" },
+        "lose": { "cascadeTo": null, "probability": 0.10, "description": "Motion denied" }
+      }
+    },
+    {
+      "id": "oversight",
+      "type": "defense",
+      "title": "Congressional & DOJ Oversight Referral",
+      "phase": "phase-5",
+      "details": {
+        "deadline": "Gated - 24hrs after first win",
+        "clientTask": "Finalize oversight letters; prepare press materials",
+        "attorneyTask": "Review referral letters; coordinate timing with court filings",
+        "hours": 4,
+        "cost": 1200,
+        "probability": 0.80,
+        "evidence": ["Documented prosecutorial misconduct", "Brady violations", "Sanctions rulings"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.40,
+          "text": "DOJ OIG opens investigation",
+          "counter": {
+            "brief": "Cooperate fully; provide all documentation",
+            "full": "Prepare comprehensive submission for OIG. Document all Brady violations, prosecutorial misconduct, and procedural irregularities. Request status updates.",
+            "nextAction": "oig-cooperation"
+          }
+        },
+        "B": {
+          "probability": 0.30,
+          "text": "House Judiciary requests briefing",
+          "counter": {
+            "brief": "Prepare congressional briefing materials",
+            "full": "Draft comprehensive briefing for House Judiciary Committee. Focus on systemic issues. Propose reforms. Prepare for potential testimony.",
+            "nextAction": "congressional-prep"
+          }
+        },
+        "C": {
+          "probability": 0.20,
+          "text": "House Oversight Committee inquiry",
+          "counter": {
+            "brief": "Coordinate with Oversight Committee staff",
+            "full": "Provide documentation for Oversight investigation. Focus on DOJ accountability. Support broader reform efforts.",
+            "nextAction": "oversight-cooperation"
+          }
+        },
+        "D": {
+          "probability": 0.10,
+          "text": "Referrals acknowledged but no immediate action",
+          "counter": {
+            "brief": "Follow up systematically; escalate if needed",
+            "full": "Maintain regular contact with all oversight bodies. Document all communications. Prepare media strategy if official channels unresponsive.",
+            "nextAction": "follow-up"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": "press", "probability": 0.50, "description": "Oversight investigation opened - CASCADE to Press" },
+        "partial": { "cascadeTo": null, "probability": 0.30, "description": "Inquiry underway" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.15, "description": "Under review" },
+        "lose": { "cascadeTo": null, "probability": 0.05, "description": "No action taken" }
+      }
+    },
+    {
+      "id": "press",
+      "type": "defense",
+      "title": "Press & Media Strategy",
+      "phase": "phase-5",
+      "details": {
+        "deadline": "Gated - After favorable ruling",
+        "clientTask": "Approve press release; prepare for interviews",
+        "attorneyTask": "Coordinate media outreach; manage press inquiries",
+        "hours": 3,
+        "cost": 900,
+        "probability": 0.90,
+        "evidence": ["Court rulings", "Documented misconduct", "Vindication evidence"]
+      },
+      "responses": {
+        "A": {
+          "probability": 0.50,
+          "text": "Local media coverage",
+          "counter": {
+            "brief": "Expand to regional and national outlets",
+            "full": "Leverage local coverage for broader reach. Contact legal media (Law360, Above the Law). Prepare op-ed for national publication.",
+            "nextAction": "media-expansion"
+          }
+        },
+        "B": {
+          "probability": 0.30,
+          "text": "National legal media interest",
+          "counter": {
+            "brief": "Provide exclusive access for in-depth coverage",
+            "full": "Offer exclusive interview to major legal publication. Provide comprehensive documentation. Focus on systemic reform message.",
+            "nextAction": "exclusive-interview"
+          }
+        },
+        "C": {
+          "probability": 0.15,
+          "text": "Documentary/book interest",
+          "counter": {
+            "brief": "Evaluate opportunities carefully",
+            "full": "Review documentary and book proposals. Ensure editorial control over narrative. Focus on vindication and reform message.",
+            "nextAction": "media-deals"
+          }
+        },
+        "D": {
+          "probability": 0.05,
+          "text": "Government requests media silence",
+          "counter": {
+            "brief": "First Amendment protects public discussion",
+            "full": "Reject any gag order attempts. Court filings are public record. Defendant has right to tell his story. Challenge any prior restraint.",
+            "nextAction": "first-amendment"
+          }
+        }
+      },
+      "outcomes": {
+        "win": { "cascadeTo": null, "probability": 0.60, "description": "Full public vindication" },
+        "partial": { "cascadeTo": null, "probability": 0.30, "description": "Significant coverage" },
+        "statusQuo": { "cascadeTo": null, "probability": 0.08, "description": "Limited coverage" },
+        "lose": { "cascadeTo": null, "probability": 0.02, "description": "No coverage" }
+      }
+    }
+  ],
+  "cascades": [
+    {
+      "trigger": "continuance-win",
+      "unlocks": "discovery",
+      "description": "Continuance secured - proceed to Phase 1 Discovery & Taint"
+    },
+    {
+      "trigger": "franks-win",
+      "unlocks": "suppress",
+      "description": "Franks win establishes warrant invalidity, strengthening suppression"
+    },
+    {
+      "trigger": "suppress-win",
+      "unlocks": "wire-2-10",
+      "description": "Suppression eliminates evidence base for wire fraud counts"
+    },
+    {
+      "trigger": "brady-win",
+      "unlocks": "franks",
+      "description": "Brady disclosure strengthens Franks showing of misstatements"
+    },
+    {
+      "trigger": "wire-2-10-win",
+      "unlocks": "wire-11-20",
+      "description": "First wire batch dismissal creates precedent for remaining counts"
+    },
+    {
+      "trigger": "tax-dismiss-win",
+      "unlocks": "oversight",
+      "description": "Any major win triggers oversight referral"
+    },
+    {
+      "trigger": "oversight-win",
+      "unlocks": "press",
+      "description": "Oversight action enables press strategy"
+    }
+  ],
+  "tutorial": {
+    "steps": [
+      {
+        "number": 1,
+        "title": "Click Defense Moves",
+        "description": "Click any blue defense node to reveal the government's possible responses"
+      },
+      {
+        "number": 2,
+        "title": "Explore A/B/C/D Responses",
+        "description": "Click any response option (A, B, C, or D) to see our prepared counter-punch"
+      },
+      {
+        "number": 3,
+        "title": "Follow Cascade Lines",
+        "description": "Green animated lines show how wins unlock subsequent strategic moves"
+      },
+      {
+        "number": 4,
+        "title": "Use Phase Selector",
+        "description": "Switch between phases to see the complete litigation strategy"
+      },
+      {
+        "number": 5,
+        "title": "Toggle Orientation",
+        "description": "Switch between vertical and horizontal tree layouts"
+      }
+    ]
+  }
+}

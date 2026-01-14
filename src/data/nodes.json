@@ -1,0 +1,383 @@
+{
+  "engagement_start": "2026-01-19",
+  "nodes": [
+    {
+      "id": 0,
+      "title": "Ben Cooper Enter Appearance",
+      "phase": "Discovery/Taint",
+      "day_from_start": 0,
+      "deadline": "2026-01-19",
+      "client_task": "Confirm engagement; sign retainer agreement",
+      "attorney_task": "File Notice of Appearance; contact AUSA to introduce representation",
+      "attorney_hours_min": 2,
+      "attorney_hours_max": 4,
+      "travel_hours": 0,
+      "estimated_cost_min": 600,
+      "estimated_cost_max": 1200,
+      "probability": 1.00,
+      "govt_responses": {
+        "A": "Acknowledge new counsel",
+        "B": "Request discovery conference",
+        "C": "Continue existing timeline",
+        "D": "Propose case schedule"
+      }
+    },
+    {
+      "id": 1,
+      "title": "File Rule 16 Discovery Demand",
+      "phase": "Discovery/Taint",
+      "day_from_start": 1,
+      "deadline": "2026-01-20",
+      "client_task": "Provide complete financial records, all communication logs, and business documentation",
+      "attorney_task": "Draft comprehensive Rule 16 demand letter; identify specific discovery needs",
+      "attorney_hours_min": 8,
+      "attorney_hours_max": 12,
+      "travel_hours": 0,
+      "estimated_cost_min": 2400,
+      "estimated_cost_max": 3600,
+      "probability": 0.95,
+      "govt_responses": {
+        "A": "Full compliance - produce all requested materials",
+        "B": "Partial compliance - claim privilege on some documents",
+        "C": "Motion for protective order",
+        "D": "Delay tactics - request extension"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Brady/Giglio Material Request",
+      "phase": "Discovery/Taint",
+      "day_from_start": 24,
+      "deadline": "2026-02-12",
+      "client_task": "Identify potential exculpatory witnesses and evidence",
+      "attorney_task": "File formal Brady demand; document specific exculpatory evidence expected",
+      "attorney_hours_min": 6,
+      "attorney_hours_max": 9,
+      "travel_hours": 0,
+      "estimated_cost_min": 1800,
+      "estimated_cost_max": 2700,
+      "probability": 0.90,
+      "govt_responses": {
+        "A": "Produce Brady material immediately",
+        "B": "Claim no Brady material exists",
+        "C": "Partial disclosure with redactions",
+        "D": "Request in camera review by court"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Taint Review Analysis",
+      "phase": "Discovery/Taint",
+      "day_from_start": 7,
+      "deadline": "2026-01-28",
+      "client_task": "Identify privileged communications; flag attorney-client materials",
+      "attorney_task": "Analyze taint team procedures; identify Groff source contamination",
+      "attorney_hours_min": 4,
+      "attorney_hours_max": 6,
+      "travel_hours": 0,
+      "estimated_cost_min": 1200,
+      "estimated_cost_max": 1800,
+      "probability": 0.85,
+      "govt_responses": {
+        "A": "Acknowledge taint issues",
+        "B": "Deny any taint contamination",
+        "C": "Propose taint protocol",
+        "D": "Request special master"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Motion to Compel Discovery (End Rule 16)",
+      "phase": "Discovery/Taint",
+      "day_from_start": 16,
+      "deadline": "2026-02-04",
+      "client_task": "Document all discovery deficiencies experienced",
+      "attorney_task": "Draft motion to compel if government delays; prepare supporting brief",
+      "attorney_hours_min": 10,
+      "attorney_hours_max": 15,
+      "travel_hours": 1.5,
+      "estimated_cost_min": 3450,
+      "estimated_cost_max": 4950,
+      "probability": 0.70,
+      "govt_responses": {
+        "A": "Comply before hearing",
+        "B": "Oppose motion - claim good faith compliance",
+        "C": "Produce partial documents",
+        "D": "Request sanctions against defense"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Suppression Motion - Wire Evidence",
+      "phase": "Motion Battle",
+      "day_from_start": 21,
+      "deadline": "2026-02-11",
+      "client_task": "Provide all details about wire transfer origins and authorization",
+      "attorney_task": "Research Fourth Amendment issues; draft suppression motion",
+      "attorney_hours_min": 15,
+      "attorney_hours_max": 22.5,
+      "travel_hours": 0,
+      "estimated_cost_min": 4500,
+      "estimated_cost_max": 6750,
+      "probability": 0.35,
+      "govt_responses": {
+        "A": "Concede suppression on some evidence",
+        "B": "Oppose - argue good faith exception",
+        "C": "File sur-reply with additional authority",
+        "D": "Request evidentiary hearing"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Motion to Sever Counts",
+      "phase": "Motion Battle",
+      "day_from_start": 25,
+      "deadline": "2026-02-15",
+      "client_task": "Review charge groupings; identify prejudicial joinder",
+      "attorney_task": "Draft severance motion; argue prejudice from tax count spillover",
+      "attorney_hours_min": 8,
+      "attorney_hours_max": 12,
+      "travel_hours": 0,
+      "estimated_cost_min": 2400,
+      "estimated_cost_max": 3600,
+      "probability": 0.40,
+      "govt_responses": {
+        "A": "Agree to sever tax counts",
+        "B": "Oppose - argue common scheme",
+        "C": "Propose limiting instructions instead",
+        "D": "Request joint trial brief on issue"
+      }
+    },
+    {
+      "id": 7,
+      "title": "Motion in Limine - Prior Acts",
+      "phase": "Motion Battle",
+      "day_from_start": 32,
+      "deadline": "2026-02-22",
+      "client_task": "Disclose any prior conduct that may be at issue",
+      "attorney_task": "File motion to exclude 404(b) evidence; research bad acts doctrine",
+      "attorney_hours_min": 10,
+      "attorney_hours_max": 15,
+      "travel_hours": 0,
+      "estimated_cost_min": 3000,
+      "estimated_cost_max": 4500,
+      "probability": 0.55,
+      "govt_responses": {
+        "A": "Withdraw 404(b) notice",
+        "B": "Oppose - argue intrinsic evidence",
+        "C": "Propose redacted version",
+        "D": "Request hearing on admissibility"
+      }
+    },
+    {
+      "id": 8,
+      "title": "Franks Evidentiary Hearing",
+      "phase": "Evidentiary Hearings",
+      "day_from_start": 39,
+      "deadline": "2026-03-01",
+      "client_task": "Attend hearing; provide testimony if required on warrant issues",
+      "attorney_task": "Present Franks challenge; cross-examine affiant; argue warrant invalidity",
+      "attorney_hours_min": 12,
+      "attorney_hours_max": 18,
+      "travel_hours": 3,
+      "estimated_cost_min": 4500,
+      "estimated_cost_max": 6300,
+      "probability": 0.60,
+      "govt_responses": {
+        "A": "Concede warrant defects",
+        "B": "Defend warrant - good faith exception",
+        "C": "Argue inevitable discovery",
+        "D": "Request continuance for additional witnesses"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Suppression Hearing",
+      "phase": "Evidentiary Hearings",
+      "day_from_start": 42,
+      "deadline": "2026-03-04",
+      "client_task": "Review evidence list; confirm suppression priorities",
+      "attorney_task": "Argue suppression motions; present Fourth Amendment violations",
+      "attorney_hours_min": 8,
+      "attorney_hours_max": 12,
+      "travel_hours": 3,
+      "estimated_cost_min": 3300,
+      "estimated_cost_max": 4500,
+      "probability": 0.50,
+      "govt_responses": {
+        "A": "Agree to partial suppression",
+        "B": "Oppose all suppression arguments",
+        "C": "Propose alternative evidence",
+        "D": "Appeal court ruling"
+      }
+    },
+    {
+      "id": 10,
+      "title": "Plea Negotiation Round 1",
+      "phase": "Plea Negotiation",
+      "day_from_start": 49,
+      "deadline": "2026-03-11",
+      "client_task": "Provide settlement authority; review cooperation potential",
+      "attorney_task": "Initiate plea discussions; assess government's position post-hearings",
+      "attorney_hours_min": 4,
+      "attorney_hours_max": 6,
+      "travel_hours": 1.5,
+      "estimated_cost_min": 1650,
+      "estimated_cost_max": 2175,
+      "probability": 0.60,
+      "govt_responses": {
+        "A": "Offer favorable plea - reduced counts",
+        "B": "Offer standard plea - guidelines sentence",
+        "C": "Reject negotiations - demand trial",
+        "D": "Request proffer session"
+      }
+    },
+    {
+      "id": 11,
+      "title": "Plea Negotiation Round 2",
+      "phase": "Plea Negotiation",
+      "day_from_start": 53,
+      "deadline": "2026-03-15",
+      "client_task": "Final decision on plea vs trial; provide written authorization",
+      "attorney_task": "Counter-propose if initial offer rejected; assess trial risks",
+      "attorney_hours_min": 6,
+      "attorney_hours_max": 9,
+      "travel_hours": 1.5,
+      "estimated_cost_min": 2250,
+      "estimated_cost_max": 3150,
+      "probability": 0.50,
+      "govt_responses": {
+        "A": "Accept counter-proposal",
+        "B": "Final offer - take or leave",
+        "C": "Withdraw all offers",
+        "D": "Request cooperation agreement"
+      }
+    },
+    {
+      "id": 12,
+      "title": "TARGET DATE Decision Gate",
+      "phase": "Plea Negotiation",
+      "day_from_start": 56,
+      "deadline": "2026-03-18",
+      "client_task": "FINAL DECISION: Accept plea or proceed to trial",
+      "attorney_task": "Present final analysis; document client decision",
+      "attorney_hours_min": 4,
+      "attorney_hours_max": 6,
+      "travel_hours": 1.5,
+      "estimated_cost_min": 1650,
+      "estimated_cost_max": 2175,
+      "probability": 1.00,
+      "govt_responses": {
+        "A": "Plea accepted - schedule change of plea hearing",
+        "B": "Plea rejected - confirm trial date",
+        "C": "Government withdraws plea offer",
+        "D": "Continuance granted for further negotiation"
+      }
+    },
+    {
+      "id": 13,
+      "title": "Jury Selection Preparation",
+      "phase": "Pretrial Prep",
+      "day_from_start": 63,
+      "deadline": "2026-03-25",
+      "client_task": "Review jury questionnaire; identify voir dire priorities",
+      "attorney_task": "Prepare jury selection questions; research jury pool demographics",
+      "attorney_hours_min": 12,
+      "attorney_hours_max": 18,
+      "travel_hours": 0,
+      "estimated_cost_min": 3600,
+      "estimated_cost_max": 5400,
+      "probability": 0.45,
+      "govt_responses": {
+        "A": "Agree to joint jury questionnaire",
+        "B": "Object to defense questions",
+        "C": "Request anonymous jury",
+        "D": "File challenges for cause"
+      }
+    },
+    {
+      "id": 14,
+      "title": "Final Pretrial Conference",
+      "phase": "Pretrial Prep",
+      "day_from_start": 67,
+      "deadline": "2026-03-29",
+      "client_task": "Attend conference; final review of trial strategy",
+      "attorney_task": "Finalize exhibit list; confirm witness order; resolve pending issues",
+      "attorney_hours_min": 6,
+      "attorney_hours_max": 9,
+      "travel_hours": 3,
+      "estimated_cost_min": 2700,
+      "estimated_cost_max": 3600,
+      "probability": 0.45,
+      "govt_responses": {
+        "A": "Agree to all stipulations",
+        "B": "Object to defense exhibits",
+        "C": "Propose last-minute plea",
+        "D": "Request trial continuance"
+      }
+    },
+    {
+      "id": 15,
+      "title": "Trial Day 1 - Jury Selection",
+      "phase": "Trial",
+      "day_from_start": 83,
+      "deadline": "2026-04-14",
+      "client_task": "Attend trial; assist with juror observations",
+      "attorney_task": "Conduct voir dire; exercise challenges strategically",
+      "attorney_hours_min": 10,
+      "attorney_hours_max": 15,
+      "travel_hours": 3,
+      "estimated_cost_min": 3900,
+      "estimated_cost_max": 5550,
+      "probability": 0.45,
+      "govt_responses": {
+        "A": "Accept jury as selected",
+        "B": "Use all peremptory challenges",
+        "C": "Batson challenge",
+        "D": "Request mistrial on jury issues"
+      }
+    },
+    {
+      "id": 16,
+      "title": "Trial Days 2-5 - Government Case",
+      "phase": "Trial",
+      "day_from_start": 87,
+      "deadline": "2026-04-18",
+      "client_task": "Attend all sessions; prepare for potential testimony",
+      "attorney_task": "Cross-examine witnesses; preserve objections",
+      "attorney_hours_min": 40,
+      "attorney_hours_max": 60,
+      "travel_hours": 6,
+      "estimated_cost_min": 13800,
+      "estimated_cost_max": 19800,
+      "probability": 0.45,
+      "govt_responses": {
+        "A": "Rest early - weak case",
+        "B": "Present full case - all 27 counts",
+        "C": "Add rebuttal witnesses",
+        "D": "Move to amend charges"
+      }
+    },
+    {
+      "id": 17,
+      "title": "Trial Days 6-8 - Defense Case & Verdict",
+      "phase": "Trial",
+      "day_from_start": 91,
+      "deadline": "2026-04-22",
+      "client_task": "Decision on testifying; support defense witnesses",
+      "attorney_task": "Present defense; deliver closing; argue jury instructions",
+      "attorney_hours_min": 30,
+      "attorney_hours_max": 45,
+      "travel_hours": 6,
+      "estimated_cost_min": 10800,
+      "estimated_cost_max": 15300,
+      "probability": 0.45,
+      "govt_responses": {
+        "A": "Conviction on all counts",
+        "B": "Conviction on some counts",
+        "C": "Acquittal",
+        "D": "Hung jury - mistrial"
+      }
+    }
+  ]
+}

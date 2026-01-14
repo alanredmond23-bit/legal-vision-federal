@@ -1,0 +1,173 @@
+{
+  "attorney": {
+    "name": "Benjamin Cooper",
+    "hourly_rate": 300,
+    "travel_rate": 150
+  },
+  "phases": {
+    "Discovery/Taint": {
+      "moves": [1, 2, 3, 4],
+      "total_attorney_hours_min": 28,
+      "total_attorney_hours_max": 42,
+      "total_travel_hours": 1.5,
+      "estimated_cost_min": 8850,
+      "estimated_cost_max": 12825,
+      "description": "Rule 16 demands, Brady/Giglio, taint review, discovery enforcement"
+    },
+    "Motion Battle": {
+      "moves": [5, 6, 7],
+      "total_attorney_hours_min": 33,
+      "total_attorney_hours_max": 49.5,
+      "total_travel_hours": 0,
+      "estimated_cost_min": 9900,
+      "estimated_cost_max": 14850,
+      "description": "Suppression, severance, and motions in limine"
+    },
+    "Evidentiary Hearings": {
+      "moves": [8, 9],
+      "total_attorney_hours_min": 20,
+      "total_attorney_hours_max": 30,
+      "total_travel_hours": 6,
+      "estimated_cost_min": 7800,
+      "estimated_cost_max": 10800,
+      "description": "Franks hearing, suppression hearing, court arguments"
+    },
+    "Plea Negotiation": {
+      "moves": [10, 11, 12],
+      "total_attorney_hours_min": 14,
+      "total_attorney_hours_max": 21,
+      "total_travel_hours": 4.5,
+      "estimated_cost_min": 5550,
+      "estimated_cost_max": 7500,
+      "description": "Settlement discussions, plea conferences, decision gate"
+    },
+    "Pretrial Prep": {
+      "moves": [13, 14],
+      "total_attorney_hours_min": 18,
+      "total_attorney_hours_max": 27,
+      "total_travel_hours": 3,
+      "estimated_cost_min": 6300,
+      "estimated_cost_max": 9000,
+      "description": "Jury preparation, final pretrial conference"
+    },
+    "Trial": {
+      "moves": [15, 16, 17],
+      "total_attorney_hours_min": 80,
+      "total_attorney_hours_max": 120,
+      "total_travel_hours": 15,
+      "estimated_cost_min": 28500,
+      "estimated_cost_max": 40500,
+      "description": "Full trial through verdict - If Necessary"
+    }
+  },
+  "scenarios": {
+    "case_dropped": {
+      "name": "Case Dropped",
+      "phases_included": ["Discovery/Taint"],
+      "probability": null,
+      "estimated_total_min": null,
+      "estimated_total_max": null,
+      "description": "Government voluntarily dismisses all charges"
+    },
+    "dismissal_before_trial": {
+      "name": "Dismissal Before Trial",
+      "phases_included": ["Discovery/Taint", "Motion Battle", "Evidentiary Hearings"],
+      "probability": null,
+      "estimated_total_min": null,
+      "estimated_total_max": null,
+      "description": "Motions succeed, court dismisses case"
+    },
+    "early_plea": {
+      "name": "Early Plea",
+      "phases_included": ["Discovery/Taint", "Motion Battle", "Evidentiary Hearings", "Plea Negotiation"],
+      "probability": null,
+      "estimated_total_min": null,
+      "estimated_total_max": null,
+      "description": "Settlement reached before May 1 target date"
+    },
+    "late_plea": {
+      "name": "Late Plea",
+      "phases_included": ["Discovery/Taint", "Motion Battle", "Evidentiary Hearings", "Plea Negotiation", "Pretrial Prep"],
+      "probability": null,
+      "estimated_total_min": null,
+      "estimated_total_max": null,
+      "description": "Settlement reached after target date during trial prep"
+    },
+    "full_trial": {
+      "name": "Full Trial",
+      "phases_included": ["Discovery/Taint", "Motion Battle", "Evidentiary Hearings", "Plea Negotiation", "Pretrial Prep", "Trial"],
+      "probability": null,
+      "estimated_total_min": null,
+      "estimated_total_max": null,
+      "description": "Case proceeds through verdict - If Necessary"
+    }
+  },
+  "summary": {
+    "total_moves": 17,
+    "total_attorney_hours_min": 193,
+    "total_attorney_hours_max": 289.5,
+    "total_travel_hours": 30,
+    "minimum_cost": null,
+    "maximum_cost": null,
+    "expected_value": null
+  },
+  "motion_priority_groups": {
+    "critical": {
+      "label": "Critical",
+      "motions": ["Dismiss-Appointment", "Brady/Giglio", "Franks/Suppress", "Vindictive Prosecution", "Discovery Status"]
+    },
+    "important": {
+      "label": "Important",
+      "motions": ["Daubert", "Limine", "Continuance", "Napue", "Tax Dismiss"]
+    },
+    "supporting": {
+      "label": "Supporting",
+      "motions": ["Conspiracy Dismiss", "Wire Fraud Dismiss", "Severance", "Speedy Trial", "Sanctions"]
+    }
+  },
+  "evidence_status": {
+    "have": [
+      {"item": "CPA engagement letters and advice memos", "status": "READY"},
+      {"item": "Complete ERC documentation", "status": "COMPLETE"},
+      {"item": "Malcolm Smith testimony", "status": "READY"},
+      {"item": "DocuSign audit trails (100%)", "status": "HAVE"},
+      {"item": "Groff emails showing authority", "status": "HAVE"},
+      {"item": "Azure database (100 TB)", "status": "ACCESSIBLE"},
+      {"item": "Superseding Indictment (24-376)", "status": "HAVE"},
+      {"item": "Original Indictment timeline", "status": "HAVE"},
+      {"item": "Client financial records 2019-2024", "status": "READY"},
+      {"item": "Business entity documentation", "status": "COMPLETE"}
+    ],
+    "need": [
+      {"item": "Five9 IVR recordings", "action": "SUBPOENA URGENT"},
+      {"item": "Groff 302s", "action": "BRADY DEMAND"},
+      {"item": "Groff proffer transcripts", "action": "BRADY DEMAND"},
+      {"item": "Groff plea agreement terms", "action": "BRADY DEMAND"},
+      {"item": "Computer devices", "action": "FORENSIC INQUIRY"},
+      {"item": "Full Rule 16 discovery package", "action": "DEMAND FILED"},
+      {"item": "All Brady/Giglio materials", "action": "DEMAND FILED"},
+      {"item": "Taint team review results", "action": "REQUEST PENDING"},
+      {"item": "Government evidence inventory", "action": "PENDING"},
+      {"item": "Co-defendant plea agreements", "action": "BRADY REQUEST"}
+    ],
+    "locate": [
+      {"item": "Refund records", "location": "Client files"},
+      {"item": "Org charts", "location": "Client files"},
+      {"item": "Delegation documents", "location": "Client files"},
+      {"item": "Carrier contracts", "location": "Client files"},
+      {"item": "Grant Thornton reviews", "location": "Client files"},
+      {"item": "Personal email communications", "location": "Client email accounts"},
+      {"item": "Tax filing records 2019-2024", "location": "Client CPA"},
+      {"item": "Employment agreements", "location": "Client HR files"},
+      {"item": "Business contracts", "location": "Corporate records"},
+      {"item": "Character witness contact info", "location": "Client contacts"}
+    ]
+  },
+  "outcomes": [
+    {"name": "Case Dropped", "probability": null, "description": "Government voluntarily dismisses all charges"},
+    {"name": "Dismissal Before Trial", "probability": null, "description": "Motions succeed, court dismisses case"},
+    {"name": "Early Plea", "probability": null, "description": "Settlement reached before May 1 target date"},
+    {"name": "Late Plea", "probability": null, "description": "Settlement reached after target date"},
+    {"name": "Full Trial", "probability": null, "description": "Case proceeds to verdict"}
+  ]
+}

@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --legal-navy: #1a365d;
+  --legal-gold: #d69e2e;
+  --legal-red: #c53030;
+  --legal-green: #276749;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Table styling */
+.legal-table {
+  @apply w-full border-collapse;
+}
+
+.legal-table th {
+  @apply bg-legal-navy text-white font-semibold py-3 px-4 text-left;
+}
+
+.legal-table td {
+  @apply py-3 px-4 border-b border-gray-200;
+}
+
+.legal-table tr:hover td {
+  @apply bg-blue-50;
+}
+
+/* Phase badges */
+.phase-badge {
+  @apply inline-block px-2 py-1 rounded text-xs font-semibold uppercase tracking-wide;
+}
+
+.phase-discovery { @apply bg-blue-100 text-blue-800; }
+.phase-preparation { @apply bg-purple-100 text-purple-800; }
+.phase-motions { @apply bg-orange-100 text-orange-800; }
+.phase-hearings { @apply bg-cyan-100 text-cyan-800; }
+.phase-negotiation { @apply bg-green-100 text-green-800; }
+.phase-trial-prep { @apply bg-yellow-100 text-yellow-800; }
+.phase-trial { @apply bg-red-100 text-red-800; }
+.phase-decision { @apply bg-pink-100 text-pink-800; }
+
+/* Probability indicators */
+.prob-high { @apply text-green-600; }
+.prob-medium { @apply text-yellow-600; }
+.prob-low { @apply text-red-600; }
+
+/* Response matrix */
+.response-grid {
+  @apply grid grid-cols-2 gap-2 text-sm;
+}
+
+.response-item {
+  @apply p-2 rounded border;
+}
+
+.response-a { @apply bg-green-50 border-green-200; }
+.response-b { @apply bg-blue-50 border-blue-200; }
+.response-c { @apply bg-yellow-50 border-yellow-200; }
+.response-d { @apply bg-red-50 border-red-200; }
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .legal-table th {
+    @apply bg-gray-800;
+  }
+}

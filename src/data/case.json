@@ -1,0 +1,23 @@
+{
+  "name": "United States v. Redmond",
+  "docket": "EDPA 24-376",
+  "court": "U.S. District Court, Eastern District of Pennsylvania",
+  "judge": "Jeffrey L. Schmehl",
+  "defendant": "Alan Redmond",
+  "attorney": {
+    "name": "Benjamin Cooper",
+    "firm": "Daigle Cooper & Associates",
+    "hourly_rate": 300,
+    "travel_time_hours": 1.5
+  },
+  "target_date": "2026-05-01",
+  "trial_date": "2026-04-13",
+  "engagement_start": "2026-01-21",
+  "charges": {
+    "total": 27,
+    "conspiracy": 1,
+    "wire_fraud": 19,
+    "tax_evasion": 4,
+    "tax_failure": 3
+  }
+}

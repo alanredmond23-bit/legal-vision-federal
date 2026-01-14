@@ -1,0 +1,256 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "decision",
+      "data": { "label": "DEFENSE STRATEGY", "subtitle": "Choose Opening Move" },
+      "position": { "x": 400, "y": 0 }
+    },
+    {
+      "id": "discovery",
+      "type": "decision",
+      "data": { "label": "Rule 16 Discovery", "subtitle": "File Demand", "probability": 0.95 },
+      "position": { "x": 150, "y": 120 }
+    },
+    {
+      "id": "brady",
+      "type": "decision",
+      "data": { "label": "Brady/Giglio", "subtitle": "File Demand", "probability": 0.90 },
+      "position": { "x": 400, "y": 120 }
+    },
+    {
+      "id": "suppress",
+      "type": "decision",
+      "data": { "label": "Suppression Motion", "subtitle": "Wire Evidence", "probability": 0.35 },
+      "position": { "x": 650, "y": 120 }
+    },
+    {
+      "id": "discovery-govt",
+      "type": "response",
+      "data": { "label": "GOVT RESPONSE", "subtitle": "Discovery" },
+      "position": { "x": 150, "y": 240 }
+    },
+    {
+      "id": "brady-govt",
+      "type": "response",
+      "data": { "label": "GOVT RESPONSE", "subtitle": "Brady" },
+      "position": { "x": 400, "y": 240 }
+    },
+    {
+      "id": "suppress-govt",
+      "type": "response",
+      "data": { "label": "GOVT RESPONSE", "subtitle": "Suppression" },
+      "position": { "x": 650, "y": 240 }
+    },
+    {
+      "id": "disc-a",
+      "type": "outcome",
+      "data": { "label": "Full Compliance", "outcome": "win" },
+      "position": { "x": 0, "y": 360 }
+    },
+    {
+      "id": "disc-b",
+      "type": "outcome",
+      "data": { "label": "Partial + Privilege", "outcome": "neutral" },
+      "position": { "x": 100, "y": 360 }
+    },
+    {
+      "id": "disc-c",
+      "type": "outcome",
+      "data": { "label": "Protective Order", "outcome": "neutral" },
+      "position": { "x": 200, "y": 360 }
+    },
+    {
+      "id": "disc-d",
+      "type": "outcome",
+      "data": { "label": "Delay/Extension", "outcome": "lose" },
+      "position": { "x": 300, "y": 360 }
+    },
+    {
+      "id": "brady-a",
+      "type": "outcome",
+      "data": { "label": "Produce Material", "outcome": "win" },
+      "position": { "x": 300, "y": 360 }
+    },
+    {
+      "id": "brady-b",
+      "type": "outcome",
+      "data": { "label": "No Material Exists", "outcome": "lose" },
+      "position": { "x": 400, "y": 360 }
+    },
+    {
+      "id": "brady-c",
+      "type": "outcome",
+      "data": { "label": "Partial Disclosure", "outcome": "neutral" },
+      "position": { "x": 500, "y": 360 }
+    },
+    {
+      "id": "brady-d",
+      "type": "outcome",
+      "data": { "label": "In Camera Review", "outcome": "neutral" },
+      "position": { "x": 600, "y": 360 }
+    },
+    {
+      "id": "supp-a",
+      "type": "outcome",
+      "data": { "label": "Evidence Suppressed", "outcome": "win", "cascade": true },
+      "position": { "x": 550, "y": 360 }
+    },
+    {
+      "id": "supp-b",
+      "type": "outcome",
+      "data": { "label": "Good Faith Exception", "outcome": "lose" },
+      "position": { "x": 650, "y": 360 }
+    },
+    {
+      "id": "supp-c",
+      "type": "outcome",
+      "data": { "label": "Sur-Reply Filed", "outcome": "neutral" },
+      "position": { "x": 750, "y": 360 }
+    },
+    {
+      "id": "supp-d",
+      "type": "outcome",
+      "data": { "label": "Evidentiary Hearing", "outcome": "neutral" },
+      "position": { "x": 850, "y": 360 }
+    },
+    {
+      "id": "cascade-dismiss",
+      "type": "decision",
+      "data": { "label": "Motion to Dismiss", "subtitle": "Wire Counts 2-20", "probability": 0.72 },
+      "position": { "x": 550, "y": 480 }
+    },
+    {
+      "id": "dismiss-govt",
+      "type": "response",
+      "data": { "label": "GOVT RESPONSE", "subtitle": "Dismissal" },
+      "position": { "x": 550, "y": 600 }
+    },
+    {
+      "id": "dismiss-a",
+      "type": "outcome",
+      "data": { "label": "Counts Dismissed", "outcome": "win" },
+      "position": { "x": 450, "y": 720 }
+    },
+    {
+      "id": "dismiss-b",
+      "type": "outcome",
+      "data": { "label": "Oppose - Proceed", "outcome": "neutral" },
+      "position": { "x": 550, "y": 720 }
+    },
+    {
+      "id": "dismiss-c",
+      "type": "outcome",
+      "data": { "label": "Supersede Indictment", "outcome": "lose" },
+      "position": { "x": 650, "y": 720 }
+    },
+    {
+      "id": "plea-gate",
+      "type": "decision",
+      "data": { "label": "PLEA NEGOTIATION", "subtitle": "Decision Gate", "probability": 0.60 },
+      "position": { "x": 400, "y": 840 }
+    },
+    {
+      "id": "plea-govt",
+      "type": "response",
+      "data": { "label": "GOVT RESPONSE", "subtitle": "Plea Offer" },
+      "position": { "x": 400, "y": 960 }
+    },
+    {
+      "id": "plea-a",
+      "type": "outcome",
+      "data": { "label": "Favorable Plea", "outcome": "win" },
+      "position": { "x": 250, "y": 1080 }
+    },
+    {
+      "id": "plea-b",
+      "type": "outcome",
+      "data": { "label": "Standard Offer", "outcome": "neutral" },
+      "position": { "x": 400, "y": 1080 }
+    },
+    {
+      "id": "plea-c",
+      "type": "outcome",
+      "data": { "label": "No Deal - Trial", "outcome": "lose" },
+      "position": { "x": 550, "y": 1080 }
+    },
+    {
+      "id": "final-resolution",
+      "type": "decision",
+      "data": { "label": "MARCH 17 TARGET", "subtitle": "Final Resolution", "probability": 0.67 },
+      "position": { "x": 400, "y": 1200 }
+    },
+    {
+      "id": "final-a",
+      "type": "outcome",
+      "data": { "label": "DISMISSAL", "outcome": "win" },
+      "position": { "x": 200, "y": 1320 }
+    },
+    {
+      "id": "final-b",
+      "type": "outcome",
+      "data": { "label": "FAVORABLE PLEA", "outcome": "win" },
+      "position": { "x": 350, "y": 1320 }
+    },
+    {
+      "id": "final-c",
+      "type": "outcome",
+      "data": { "label": "STANDARD PLEA", "outcome": "neutral" },
+      "position": { "x": 500, "y": 1320 }
+    },
+    {
+      "id": "final-d",
+      "type": "outcome",
+      "data": { "label": "PROCEED TO TRIAL", "outcome": "lose" },
+      "position": { "x": 650, "y": 1320 }
+    }
+  ],
+  "edges": [
+    { "id": "e-start-disc", "source": "start", "target": "discovery", "label": "Discovery" },
+    { "id": "e-start-brady", "source": "start", "target": "brady", "label": "Brady" },
+    { "id": "e-start-supp", "source": "start", "target": "suppress", "label": "Suppress" },
+
+    { "id": "e-disc-govt", "source": "discovery", "target": "discovery-govt" },
+    { "id": "e-brady-govt", "source": "brady", "target": "brady-govt" },
+    { "id": "e-supp-govt", "source": "suppress", "target": "suppress-govt" },
+
+    { "id": "e-disc-a", "source": "discovery-govt", "target": "disc-a", "label": "A" },
+    { "id": "e-disc-b", "source": "discovery-govt", "target": "disc-b", "label": "B" },
+    { "id": "e-disc-c", "source": "discovery-govt", "target": "disc-c", "label": "C" },
+    { "id": "e-disc-d", "source": "discovery-govt", "target": "disc-d", "label": "D" },
+
+    { "id": "e-brady-a", "source": "brady-govt", "target": "brady-a", "label": "A" },
+    { "id": "e-brady-b", "source": "brady-govt", "target": "brady-b", "label": "B" },
+    { "id": "e-brady-c", "source": "brady-govt", "target": "brady-c", "label": "C" },
+    { "id": "e-brady-d", "source": "brady-govt", "target": "brady-d", "label": "D" },
+
+    { "id": "e-supp-a", "source": "suppress-govt", "target": "supp-a", "label": "A" },
+    { "id": "e-supp-b", "source": "suppress-govt", "target": "supp-b", "label": "B" },
+    { "id": "e-supp-c", "source": "suppress-govt", "target": "supp-c", "label": "C" },
+    { "id": "e-supp-d", "source": "suppress-govt", "target": "supp-d", "label": "D" },
+
+    { "id": "e-cascade", "source": "supp-a", "target": "cascade-dismiss", "label": "CASCADE", "animated": true },
+
+    { "id": "e-dismiss-govt", "source": "cascade-dismiss", "target": "dismiss-govt" },
+    { "id": "e-dismiss-a", "source": "dismiss-govt", "target": "dismiss-a", "label": "A" },
+    { "id": "e-dismiss-b", "source": "dismiss-govt", "target": "dismiss-b", "label": "B" },
+    { "id": "e-dismiss-c", "source": "dismiss-govt", "target": "dismiss-c", "label": "C" },
+
+    { "id": "e-to-plea", "source": "dismiss-a", "target": "plea-gate", "animated": true },
+    { "id": "e-to-plea2", "source": "dismiss-b", "target": "plea-gate" },
+
+    { "id": "e-plea-govt", "source": "plea-gate", "target": "plea-govt" },
+    { "id": "e-plea-a", "source": "plea-govt", "target": "plea-a", "label": "A" },
+    { "id": "e-plea-b", "source": "plea-govt", "target": "plea-b", "label": "B" },
+    { "id": "e-plea-c", "source": "plea-govt", "target": "plea-c", "label": "C" },
+
+    { "id": "e-to-final", "source": "plea-a", "target": "final-resolution" },
+    { "id": "e-to-final2", "source": "plea-b", "target": "final-resolution" },
+    { "id": "e-to-final3", "source": "plea-c", "target": "final-resolution" },
+
+    { "id": "e-final-a", "source": "final-resolution", "target": "final-a", "label": "35%" },
+    { "id": "e-final-b", "source": "final-resolution", "target": "final-b", "label": "32%" },
+    { "id": "e-final-c", "source": "final-resolution", "target": "final-c", "label": "18%" },
+    { "id": "e-final-d", "source": "final-resolution", "target": "final-d", "label": "15%" }
+  ]
+}
